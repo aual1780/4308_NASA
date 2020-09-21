@@ -1,20 +1,29 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Project
+NASA/JPL
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+# Team Members:
+Austin Albert
+Joel Courtney
+Willie Chew
+Nick LaMonica
+Sahib Bajwa
+Joseph Ledesma
+Matthew Cohen
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+# Platform
+Java - JDK 8
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+# Technical Contact
+Marcel Llopis
+marcel.llopis@jpl.nasa.gov
+
+
+# SPICE Pages
+https://naif.jpl.nasa.gov/naif/
+[Toolkit downloads](https://naif.jpl.nasa.gov/naif/toolkit.html)
+[Tutorials](https://naif.jpl.nasa.gov/naif/tutorials.html)
+[Lessons](https://naif.jpl.nasa.gov/naif/lessons.html)
+[Starter data](https://naif.jpl.nasa.gov/naif/data_generic.html)
+
+https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/Tutorials/pdf/individual_docs/08_intro_to_toolkit.pdf

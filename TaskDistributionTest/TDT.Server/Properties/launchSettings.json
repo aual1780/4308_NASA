@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "TDT.Server": {
+      "commandName": "Project"
+    }
+  }
+}

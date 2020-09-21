@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.13.0" />
+    <PackageReference Include="Grpc" Version="2.32.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.32.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="TIPC.Core.Tools.Extensions" Version="1.1.0" />
+    <PackageReference Include="TIPC.Core.Tools.Threading" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="../protos/helloworld.proto" Link="helloworld.proto" />
+    <Protobuf Include="../protos/mathcalc_onearg.proto" Link="mathcalc_onearg.proto" />
+  </ItemGroup>
+
+</Project>

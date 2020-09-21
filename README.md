@@ -1,5 +1,7 @@
 # Project
-NASA/JPL
+CU Boulder 2020-2021
+4308 Capstone
+NASA/JPL project
 
 # Team Members:
 Austin Albert

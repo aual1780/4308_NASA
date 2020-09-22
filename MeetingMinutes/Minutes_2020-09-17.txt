@@ -1,0 +1,20 @@
+Thursday 9/17 (5:15 - 6:50)
+
+- Attendence: 
+	Joe Ledesma, Joel Courtney, Matt Cohen, Austin Albert, Willie Chew, Sahib Bajwa, Nick
+
+- Discussion:
+	- Met with Marcel from JPL
+		- Personal introductions
+		- Talked project direction
+		- SPICE Documentation
+		- SPICE tutorials
+		- Zero MQ
+	- Met with Jowie the TA
+		- Personal Introductions
+	- Discussed current week's tasks
+		- Explore the JNI and Spice
+		- Explore Zero MQ
+		- Get documentation for both 
+	- Move to slack and zoom
+	- Project logicstics

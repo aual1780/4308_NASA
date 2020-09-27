@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.Main.Spice.Primitives.Double";
+option java_outer_classname = "Spice";
+
+package Spice.Primitives.Double;
+
+message Array {
+  repeated double Elements = 1;
+}
+
+message Array2D {
+  repeated Array Elements = 1;
+}

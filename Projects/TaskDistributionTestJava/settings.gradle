@@ -1,0 +1,5 @@
+rootProject.name = 'TaskDistributionTestJava'
+include 'TDT'
+include 'TDT.SpiceEngine'
+include 'TDT.SpiceWorker'
+

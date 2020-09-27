@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+group 'org.Main'
+version '1.0-SNAPSHOT'
+mainClassName = "org.Main.App"
+
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "org.Main.App"
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+    implementation 'com.typesafe:config:1.4.0'
+    implementation fileTree(include: ['*.jar'], dir: 'libs/JNISpiceLib')
+    implementation project(":TDT")
+}

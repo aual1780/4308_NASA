@@ -1,0 +1,9 @@
+Thursday 9/24 (5:25 - 6:25)
+
+- Attendance: 
+	Joe Ledesma, Joel Courtney, Matt Cohen, Willie Chew, Sahib Bajwa, Nick LaMonica
+
+- Discussion:
+	- Met with Marcel
+		- Talked about the context of the project
+		- possible appproaches of parallelization

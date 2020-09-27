@@ -1,0 +1,12 @@
+Thursday 9/17 (7:25 - 8:25)
+
+- Attendance: 
+	Joe Ledesma, Joel Courtney, Matt Cohen, Austin Albert, Willie Chew, Sahib Bajwa, Nick
+
+- Discussion:
+	- SPICE library set up
+	- Discussed parallelization techniques
+	- Project logistics
+		- Charter
+		- Confluence page
+	- Got ready for sponsor meeting tomorrow

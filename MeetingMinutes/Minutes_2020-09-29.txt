@@ -1,0 +1,8 @@
+9-29-2020 7pm - 8pm
+Attendance: 
+	Joe Ledesma, Joel Courtney, Matt Cohen, Willie Chew, Nick LaMonica
+
+- Discussed In-depth team roles
+- Status documents
+- Discussed parallelization methods
+	- Looked into Austin's method

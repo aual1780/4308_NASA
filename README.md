@@ -27,8 +27,6 @@ Java - JDK 8
 # Technical Contact
 Marcel Llopis
 
-marcel.llopis@jpl.nasa.gov
-
 
 # SPICE Pages
 https://naif.jpl.nasa.gov/naif/

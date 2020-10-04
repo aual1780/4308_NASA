@@ -10,7 +10,7 @@ public class App {
 
     public static void main(String[] args)
     {
-        Config conf = ConfigFactory.load();
+        Config conf = ConfigFactory.load("SpiceWorker.conf");
         String spiceNativePath = conf.getString("SpiceLib.NativeExecPath");
         System.load(spiceNativePath);
 

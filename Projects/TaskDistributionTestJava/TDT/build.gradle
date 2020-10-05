@@ -11,6 +11,10 @@ plugins {
     id "java"
     id "idea"
 }
+compileJava {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
 
 def protobufVersion = '3.11.4'
 def grpcVersion = '1.32.1'

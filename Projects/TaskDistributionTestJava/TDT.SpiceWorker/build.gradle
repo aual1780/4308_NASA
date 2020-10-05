@@ -34,6 +34,18 @@ jar {
     }
 }
 
+task customFatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'org.Main.App'
+    }
+    baseName = 'all-in-one-jar'
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it)}
+    }
+    with jar
+}
+
 dependencies {
     implementation("io.grpc:grpc-stub:${grpcVersion}")
     implementation("io.grpc:grpc-core:${grpcVersion}")

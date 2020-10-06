@@ -1,0 +1,8 @@
+9-30-2020 12pm - 1pm
+Attendance: 
+	Joe Ledesma, Joel Courtney, Matt Cohen, Willie Chew, Nick LaMonica, Austin Albert, Sahib Bajwa
+
+- Discussed proposed parallelization method with sponsor
+- Gave out tasks for each member
+	- Get Spice examples
+	- Investigate ZeroMQ and GRPC

@@ -1,0 +1,11 @@
+10-06-2020 7:00pm - 7:40pm
+
+Attendence:
+	Joe Ledesma, Joel Courtney, Matt Cohen, Willie Chew, Nick LaMonica, Austin Albert, Sahib Bajwa
+
+- requirements doc and ghantt chart
+	- Matthew was assigned 
+- tdt porting: worker issue
+	- Joel assigned
+- Nick is porting client worker pool from csharp tdt to java
+- Design document research

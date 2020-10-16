@@ -1,0 +1,12 @@
+10-13-2020 7:00pm - 7:35pm
+Attendance: 
+	Joe Ledesma, Joel Courtney, Matt Cohen, Willie Chew, Nick LaMonica, Austin Albert, Sahib Bajwa
+
+Discussions:
+	+ ZeroMQ group reports
+	+ Requirements doc in progress
+		- "concurrent implementation" not "parallelize"
+	+ Design doc in progress
+	+ Start design on getting a grpc call to trigger a Spice function
+		- protobuffs
+		- one grpc service per Spice call

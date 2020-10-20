@@ -56,4 +56,5 @@ dependencies {
     implementation 'com.typesafe:config:1.4.0'
     implementation fileTree(include: ['*.jar'], dir: 'libs/JNISpiceLib')
     implementation project(":TDT")
+    compileClasspath files('/usr/local/JNISpice/src/JNISpice')
 }

@@ -40,7 +40,7 @@ public class App {
         System.out.println(nativeFile.getAbsolutePath());
         System.load(nativeFile.getAbsolutePath());
 
-        //CSPICE cspice = new CSPICE();
+        CSPICE cspice = new CSPICE();
 
         int serverPort = 30672;
         try
@@ -52,13 +52,10 @@ public class App {
             //noop
         }
 
-        //Server rpcServer = ServerBuilder.forPort(serverPort)
-        //        .addService(new mxvService(cspice))
-        //        .build()
-        //        .start();
-
-        File f = new File("C://users/aalbert/Desktop/asd.txt");
-        f.createNewFile();
+        Server rpcServer = ServerBuilder.forPort(serverPort)
+                .addService(new mxvService(cspice))
+                .build()
+                .start();
 
 
         // testing cspice function
@@ -69,18 +66,18 @@ public class App {
         };
         double[] v = new double[]{ 1, 2, 3};
         double[] result;
-        //try
-        //{
-        //    result = cspice.mxv(m, v);
-        //} catch (SpiceErrorException e) {
-        //    System.out.println(e.getMessage());
-        //    return;
-        //}
-        //System.out.println(Arrays.toString(result));
+        try
+        {
+            result = cspice.mxv(m, v);
+        } catch (SpiceErrorException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+        System.out.println(Arrays.toString(result));
 
 
-        //if (rpcServer != null) {
-       //     rpcServer.awaitTermination();
-        //}
+        if (rpcServer != null) {
+            rpcServer.awaitTermination();
+        }
     }
 }

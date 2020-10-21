@@ -12,13 +12,31 @@ import io.grpc.stub.StreamObserver;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.List;
 
 public class App {
 
     public static void main(String[] args) throws Exception {
         Config conf = ConfigFactory.load("SpiceWorker.conf");
-        String spiceNativePath = conf.getString("SpiceLib.NativeExecPath");
-        File nativeFile = new File(spiceNativePath);
+        List<String> spiceNativePaths = conf.getStringList("SpiceLib.NativeExecPaths");
+        File nativeFile = null;
+        for(String path : spiceNativePaths)
+        {
+            nativeFile = new File(path);
+            if(nativeFile.exists())
+            {
+                break;
+            }
+            else
+            {
+                nativeFile = null;
+            }
+        }
+        if(nativeFile == null)
+        {
+            throw new Exception("Cannot find any of the specified SPICE native files");
+        }
+
         System.out.println(nativeFile.getAbsolutePath());
         System.load(nativeFile.getAbsolutePath());
 

@@ -19,9 +19,5 @@ public class App {
 
         System.out.println(subengineJar.getAbsolutePath());
         System.out.println(engineStartCmd);
-
-
-
-
     }
 }

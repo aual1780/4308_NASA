@@ -1,0 +1,9 @@
+10-21-2020 12:00pm - 1:00pm
+Attendance: 
+	Joe Ledesma, Joel Courtney, Matt Cohen, Willie Chew, Nick LaMonica, Austin Albert, Sahib Bajwa
+
+Discussions:
+	+ Request and handling objects to be made for each spice call  
+	+ Reviewed requirements document
+	+ Performance benchmarks to be designed
+	+ Prepare for a conversation about api's for next week

@@ -1,0 +1,9 @@
+10-20-2020 6:00pm - 7:00pm
+Attendance: 
+	Joe Ledesma, Joel Courtney, Matt Cohen, Willie Chew, Nick LaMonica
+
+Discussions:
+	+ Caught with grpc marshalling group 
+		+ shared resources about understanding GRPC
+	+ Cleared up finals points of why we chose GRPC over ZeroMQ
+		+ Ease of use

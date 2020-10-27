@@ -1,15 +1,22 @@
 package org.Main;
 
+import org.Main.Spice.MathCalc.OneArg.*;
+
+import java.awt.*;
+import java.io.IOException;
+import java.nio.channels.SocketChannel;
+import java.util.function.Function;
+
+
 public class WorkerPool {
 
     Process[] _processCollection;
     Channel[] _channelCollection;
-    MathCalc.OneArg.MathCalc.MathCalcClient[] _mathClients;
+    MathCalcGrpc.MathCalcFutureStub[] _mathClients;
     int _maxBatchSize;
 
-    public WorkerPool(FileInfo ServerPath, int StartPort, int WorkerCount, int MaxBatchSize)
-    {
-        var currentPort = StartPort;
+    public WorkerPool(String ServerPath, int StartPort, int WorkerCount, int MaxBatchSize) throws IOException {
+        int currentPort = StartPort;
         _maxBatchSize = MaxBatchSize;
         _channelCollection = new Channel[WorkerCount];
         _processCollection = new Process[WorkerCount];
@@ -17,63 +24,62 @@ public class WorkerPool {
         for (int i = 0; i < WorkerCount; ++i)
         {
             int port = currentPort++;
-            String args = $"-p {port}";
-            Process proc = Process.Start(ServerPath.FullName, args);
+            String args = "-p " + port;
+            Process proc = Runtime.getRuntime().exec( ServerPath + args); // throws io exception
             _processCollection[i] = proc;
-            _channelCollection[i] = new Channel($"127.0.0.1:{port}", ChannelCredentials.Insecure);
+            _channelCollection[i] = new Channel("127.0.0.1:"+ port);
             _mathClients[i] = new MathCalc.OneArg.MathCalc.MathCalcClient(_channelCollection[i]);
         }
     }
 
 
     public Task PerformThreadedDistributedTask(
-            string CalcName,
+            String CalcName,
             int BatchSize,
-            Func<int, double> ArgFactory,
+            Function<Integer, Double> ArgFactory,
             EventHandler<MathCalcReply> ResponseCallback)
     {
-        var state = new DistributedTaskState(CalcName, _channelCollection.Length, BatchSize, ArgFactory, ResponseCallback);
+        DistributedTaskState state = new DistributedTaskState(CalcName, _channelCollection.length, BatchSize, ArgFactory, ResponseCallback);
 
-        var t1 = new CancelThread<DistributedTaskState>(Thread1Worker);
-        var t2 = new CancelThread<DistributedTaskState>(Thread2Worker);
-        t1.Start(state);
-        t2.Start(state);
+        Thread t1 = new Thread(state);
+        Thread t2 = new Thread(state);
+        t1.start();
+        t2.start();
 
-        _ = await state.CompletionSource.Task;
+        return state.completionSource.Task;
     }
 
 
-    public void Thread1Worker(DistributedTaskState state, CancellationToken Token)
-    {
+    public void Thread1Worker(DistributedTaskState state) throws InterruptedException {
         int batchID = 0;
-        int currentBatchSize = state.BatchSize;
+        int currentBatchSize = state.batchSize;
         int currentIdx = 0;
 
         //continue working until the entire batch is processed
         while (currentIdx < currentBatchSize)
         {
-            state.RequestWaitHandle.WaitOne();
+            state.requestWaitHandle.waitOne(); // throws InterruptedException
 
             //send batch request to each worker
             //send all batch requests to the workers at once
             //the batches are sent out in waves
             //this allows the response processor to guarantee in-order evaluation
 
-            for (int i = 0; i < _channelCollection.Length && currentIdx < currentBatchSize; ++i)
+            for (int i = 0; i < _channelCollection.length && currentIdx < currentBatchSize; ++i)
             {
                 //make a new batch request for this worker
-                var rqstSize = 0;
-                var mathRequest = new MathCalcRequest()
-                {
-                    BatchID = batchID++,
-                    CalcName = state.CalcName
-                };
+                int rqstSize = 0;
+                MathCalcRequest mathRequest = new MathCalcRequest();
+//                {
+//                    BatchID = batchID++,
+//                    CalcName = state.calcName
+//                };
                 //Calculate the args for this request
                 //this allows the client to provide an arg factory and lazily evaluate arguments
                 //prevents all arguments from being stored in memory at once
-                for (var j = 0; j < _maxBatchSize && currentIdx < currentBatchSize; ++j, ++currentIdx, ++rqstSize)
+                for (int j = 0; j < _maxBatchSize && currentIdx < currentBatchSize; ++j, ++currentIdx, ++rqstSize)
                 {
-                    var arg = state.ArgFactory(currentIdx);
+                    double arg = state.argFactory.apply(currentIdx);
                     mathRequest.Args.Add(arg);
                 }
                 //dont send request if the batch is empty
@@ -83,96 +89,91 @@ public class WorkerPool {
                 }
                 //send request to next worker
                 //add awaitable to stack
-                var requestTask = _mathClients[i].DoMathAsync(mathRequest);
-                state.CurrentTaskBatch[i] = requestTask;
+                AsyncUnaryCall<MathCalcReply> requestTask = _mathClients[i].DoMathAsync(mathRequest);
+                state.currentTaskBatch[i] = requestTask;
             }
-            state.ResponseWaitHandle.Set();
+            state.responseWaitHandle.set();
         }
     }
 
-    public async void Thread2Worker(DistributedTaskState state, CancellationToken Token)
-    {
+    public void Thread2Worker(DistributedTaskState state) throws InterruptedException {
         //wait for batch responses
         //separates batch dispatching from result callback processing
         //allows one thread to push out new requests while this thread evaluates responses
         //improves performance with non-trivial callbacks
 
-        var cumResponseCount = 0;
-        var batchSize = state.BatchSize;
+        int cumResponseCount = 0;
+        int batchSize = state.batchSize;
 
         while (cumResponseCount < batchSize)
         {
-            state.ResponseWaitHandle.WaitOne();
+            state.responseWaitHandle.waitOne(); // throws interrupted exception
 
-            var resultClone = new MathCalcReply[_channelCollection.Length];
+            MathCalcReply[] resultClone = new MathCalcReply[_channelCollection.length];
 
             //wait for all worker responses to return before sending new batches
             //process the receipts, then repeat the process
             //cache responses in 2nd buffer
-            for (int i = 0; i < _channelCollection.Length; ++i)
+            for (int i = 0; i < _channelCollection.length; ++i)
             {
-                var task = state.CurrentTaskBatch[i];
+                Task task = state.currentTaskBatch[i];
                 if (task == null)
                     continue;
-                var response = await task;
+                MathCalcReply response = task;
                 resultClone[i] = response;
-                state.CurrentTaskBatch[i] = null;
+                state.currentTaskBatch[i] = null;
             }
             //let requester thread send new wave of batches
-            state.RequestWaitHandle.Set();
+            state.requestWaitHandle.set();
             //process response callbacks while new batch wave is being processed by workers
-            for (int i = 0; i < _channelCollection.Length; ++i)
+            for (int i = 0; i < _channelCollection.length; ++i)
             {
-                var response = resultClone[i];
+                MathCalcReply response = resultClone[i];
                 if(response != null)
                 {
-                    cumResponseCount += response.Responses.Count;
-                    state.ResponseCallback?.Invoke(this, response);
+                    cumResponseCount += response.getResponses(i).length; // Responses.Count;
+                    state.ResponseCallback?.Invoke(this, response); // TODO callback function
                 }
             }
         }
-        state.CompletionSource.SetResult(null);
+        state.completionSource. //.SetResult(null);
     }
 
 
 
-    public async Task PerformDistributedTask(
+    public Task PerformDistributedTask(
             String CalcName,
             int BatchSize,
-            Func<int, double> ArgFactory,
+            Function<Integer, Double> ArgFactory,
             EventHandler<MathCalcReply> ResponseCallback)
     {
         DistributedTaskState state = new DistributedTaskState(CalcName, _channelCollection.length, BatchSize, ArgFactory, ResponseCallback);
 
         int batchID = 0;
-        int currentBatchSize = state.BatchSize;
+        int currentBatchSize = state.batchSize;
         int currentIdx = 0;
 
         //continue working until the entire batch is processed
         while (currentIdx < currentBatchSize)
         {
-            for (int i = 0; i < _channelCollection.Length; ++i)
+            for (int i = 0; i < _channelCollection.length; ++i)
             {
-                state.CurrentTaskBatch[i] = null;
+                state.currentTaskBatch[i] = null;
             }
 
             //send batch cluster to each worker
             //send batches to each cluster at once
-            for (int i = 0; i < _channelCollection.Length && currentIdx < currentBatchSize; ++i)
+            for (int i = 0; i < _channelCollection.length && currentIdx < currentBatchSize; ++i)
             {
                 //make a new batch request for this worker
-                var rqstSize = 0;
-                var mathRequest = new MathCalcRequest()
-                {
-                    BatchID = batchID++,
-                    CalcName = state.CalcName
-                };
+                int rqstSize = 0;
+                MathCalcRequest mathRequest = new MathCalcRequest();
                 //Calculate the args for this request
                 //this allows the client to provide an arg factory and lazily evaluate arguments
                 //prevents all arguments from being stored in memory at once
-                for (var j = 0; j < _maxBatchSize && currentIdx < currentBatchSize; ++j, ++currentIdx, ++rqstSize)
+                for (int j = 0; j < _maxBatchSize && currentIdx < currentBatchSize; ++j, ++currentIdx, ++rqstSize)
                 {
-                    var arg = state.ArgFactory(currentIdx);
+                    double arg = state.argFactory.apply(currentIdx);
                     mathRequest.Args.Add(arg);
                 }
                 //dont send request if the batch is empty
@@ -182,37 +183,21 @@ public class WorkerPool {
                 }
                 //send request to next worker
                 //add awaitable to stack
-                var requestTask = _mathClients[i].DoMathAsync(mathRequest);
-                state.CurrentTaskBatch[i] = requestTask;
+                AsyncUnaryCall<MathCalcReply> requestTask = _mathClients[i].DoMathAsync(mathRequest);
+                state.currentTaskBatch[i] = requestTask;
             }
 
             //wait for all worker responses to return before sending new batches
             //process the receipts, then repeat the process
-            for (int i = 0; i < _channelCollection.Length; ++i)
+            for (int i = 0; i < _channelCollection.length; ++i)
             {
-                var task = state.CurrentTaskBatch[i];
+                Task task = state.currentTaskBatch[i];
                 if (task == null)
                     continue;
-                var response = await task;
-                state.ResponseCallback?.Invoke(this, response);
+                Task response = task;
+                state.responseCallback?.Invoke(this, response); // TODO callback function in java
             }
         }
     }
 
-
-
-    /// <summary>
-    /// Shutdown spawned server processes and clients
-    /// </summary>
-    public void Dispose()
-    {
-        for (Channel channel : _channelCollection)
-        {
-            channel.ShutdownAsync().Wait();
-        }
-        for ( Process proc : _processCollection)
-        {
-            proc.Dispose();
-        }
-    }
 }

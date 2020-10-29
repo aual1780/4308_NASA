@@ -1,0 +1,33 @@
+parspiceTest/Str2EtRep.java
+ parspiceTest.Str2EtRep
+ parspiceTest.Str2EtRep$1
+ parspiceTest.Str2EtRep$Builder
+parspiceTest/Str2EtRepOrBuilder.java
+ parspiceTest.Str2EtRepOrBuilder
+parspiceTest/Str2EtReq.java
+ parspiceTest.Str2EtReq
+ parspiceTest.Str2EtReq$1
+ parspiceTest.Str2EtReq$Builder
+parspiceTest/Str2EtGrpc.java
+ parspiceTest.Str2EtGrpc
+ parspiceTest.Str2EtGrpc$1
+ parspiceTest.Str2EtGrpc$2
+ parspiceTest.Str2EtGrpc$3
+ parspiceTest.Str2EtGrpc$MethodHandlers
+ parspiceTest.Str2EtGrpc$Str2EtBaseDescriptorSupplier
+ parspiceTest.Str2EtGrpc$Str2EtBlockingStub
+ parspiceTest.Str2EtGrpc$Str2EtFileDescriptorSupplier
+ parspiceTest.Str2EtGrpc$Str2EtFutureStub
+ parspiceTest.Str2EtGrpc$Str2EtImplBase
+ parspiceTest.Str2EtGrpc$Str2EtMethodDescriptorSupplier
+ parspiceTest.Str2EtGrpc$Str2EtStub
+parspiceTest/parspiceTesting.java
+ parspiceTest.parspiceTesting
+parspiceTest/Str2EtReqOrBuilder.java
+ parspiceTest.Str2EtReqOrBuilder
+parspiceTest/GClient.java
+ parspiceTest.GClient
+parspiceTest/GServer.java
+ parspiceTest.GServer
+ parspiceTest.GServer$1
+ parspiceTest.GServer$Str2EtImpl

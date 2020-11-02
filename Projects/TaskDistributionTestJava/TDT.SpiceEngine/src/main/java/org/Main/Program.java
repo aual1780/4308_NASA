@@ -33,6 +33,7 @@ public class Program {
         String log5 = null;
         String log6 = null;
 
+        // TODO: make a mathcalc callback function
         //throw away init code
         engine.PerformDistributedTask(mathFunc, 10, argFactory, MathCalcCallback);
         ///////////////////////////////////////////////////////////////////////////////////////////////////////

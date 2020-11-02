@@ -1,10 +1,8 @@
 package org.Main;
 
-import com.google.protobuf.compiler.PluginProtos;
 import io.grpc.Channel;
 import io.grpc.ManagedChannelBuilder;
 
-import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import org.Main.Spice.MathCalc.OneArg.MathCalcGrpc.*;
 import org.Main.Spice.MathCalc.OneArg.MathCalcGrpc;
@@ -60,8 +58,9 @@ public class WorkerPool  {
     {
         DistributedTaskState state = new DistributedTaskState(CalcName, _channelCollection.length, BatchSize, ArgFactory, ResponseCallback);
 
-        Thread t1 = new Thread(state); // todo, needs work
-        Thread t2 = new Thread(state);
+        // TODO: start thread1worker and thread2worker
+        Thread t1 = new Thread();
+        Thread t2 = new Thread();
         t1.start();
         t2.start();
     }
@@ -120,7 +119,7 @@ public class WorkerPool  {
 
                     }
                 };
-                _mathClients[i].doMath(mathRequest, requestTask);  // TODO async
+                _mathClients[i].doMath(mathRequest, requestTask);
                 state.currentTaskBatch.set(i, requestTask);
             }
             state.responseWaitHandle.set();
@@ -150,8 +149,8 @@ public class WorkerPool  {
                 StreamObserver<MathCalcReply> task = state.currentTaskBatch.get(i);
                 if (task == null)
                     continue;
-                MathCalcReply response = task.; // TODO
-                resultClone[i] = response;
+                StreamObserver<MathCalcReply> response = task;
+                resultClone[i] = response; // TODO
                 state.currentTaskBatch.set(i, null);
             }
             //let requester thread send new wave of batches
@@ -167,7 +166,7 @@ public class WorkerPool  {
                 }
             }
         }
-        // state.completionSource. //.SetResult(null); // TODO
+        // state.completionSource.SetResult(null); // TODO determine
     }
 
 
@@ -238,8 +237,8 @@ public class WorkerPool  {
                 StreamObserver<MathCalcReply> task = state.currentTaskBatch.get(i);
                 if (task == null)
                     continue;
-                MathCalcReply response = task; // TODO
-//                state.responseCallback?.Invoke(this, response); // TODO callback function in java replaced my stream observer
+                StreamObserver<MathCalcReply> response = task; // TODO
+                state.responseCallback?.Invoke(this, response); // TODO callback function in replacement
             }
         }
     }

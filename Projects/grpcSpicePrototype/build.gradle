@@ -28,7 +28,8 @@ dependencies {
 
     runtimeOnly "io.grpc:grpc-netty-shaded:${grpcVersion}"
 
-    compileClasspath files('../Spice/JNISpice/src/JNISpice') // change later
+    // path to a JNISpice.jar file
+    compile files('./JNISpice.jar')
 }
 
 protobuf {
@@ -62,7 +63,7 @@ startScripts.enabled = false
 task ParSpiceServer(type: CreateStartScripts) {
     mainClassName = 'parspiceTest.GServer'
     applicationName = 'parspice-server'
-    outputDir = new File(project.buildDir, 'build')
+    outputDir = new File(project.buildDir, 'tmp')
     classpath = startScripts.classpath
 }
 

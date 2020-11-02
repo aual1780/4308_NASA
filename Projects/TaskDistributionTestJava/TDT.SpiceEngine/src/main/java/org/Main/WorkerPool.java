@@ -2,9 +2,7 @@ package org.Main;
 
 import org.Main.Spice.MathCalc.OneArg.*;
 
-import java.awt.*;
 import java.io.IOException;
-import java.nio.channels.SocketChannel;
 import java.util.function.Function;
 
 
@@ -37,7 +35,7 @@ public class WorkerPool {
             String CalcName,
             int BatchSize,
             Function<Integer, Double> ArgFactory,
-            EventHandler<MathCalcReply> ResponseCallback)
+            MathCalcReply ResponseCallback)
     {
         DistributedTaskState state = new DistributedTaskState(CalcName, _channelCollection.length, BatchSize, ArgFactory, ResponseCallback);
 
@@ -69,18 +67,14 @@ public class WorkerPool {
             {
                 //make a new batch request for this worker
                 int rqstSize = 0;
-                MathCalcRequest mathRequest = new MathCalcRequest();
-//                {
-//                    BatchID = batchID++,
-//                    CalcName = state.calcName
-//                };
+                MathCalcRequest mathRequest = MathCalcRequest.newBuilder().setBatchID(batchID++).setCalcName(state.calcName);
                 //Calculate the args for this request
                 //this allows the client to provide an arg factory and lazily evaluate arguments
                 //prevents all arguments from being stored in memory at once
                 for (int j = 0; j < _maxBatchSize && currentIdx < currentBatchSize; ++j, ++currentIdx, ++rqstSize)
                 {
                     double arg = state.argFactory.apply(currentIdx);
-                    mathRequest.Args.Add(arg);
+                    mathRequest.newBuilderForType().setArgs(currentIdx, arg);
                 }
                 //dont send request if the batch is empty
                 if (rqstSize == 0)
@@ -89,7 +83,7 @@ public class WorkerPool {
                 }
                 //send request to next worker
                 //add awaitable to stack
-                AsyncUnaryCall<MathCalcReply> requestTask = _mathClients[i].DoMathAsync(mathRequest);
+                MathCalcReply requestTask = _mathClients[i].DoMathAsync(mathRequest); // TODO async
                 state.currentTaskBatch[i] = requestTask;
             }
             state.responseWaitHandle.set();

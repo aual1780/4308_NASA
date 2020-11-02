@@ -12,17 +12,35 @@ import io.grpc.stub.StreamObserver;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.List;
 
 public class App {
 
     public static void main(String[] args) throws Exception {
         Config conf = ConfigFactory.load("SpiceWorker.conf");
-        String spiceNativePath = conf.getString("SpiceLib.NativeExecPath");
-        File nativeFile = new File(spiceNativePath);
+        List<String> spiceNativePaths = conf.getStringList("SpiceLib.NativeExecPaths");
+        File nativeFile = null;
+        for(String path : spiceNativePaths)
+        {
+            nativeFile = new File(path);
+            if(nativeFile.exists())
+            {
+                break;
+            }
+            else
+            {
+                nativeFile = null;
+            }
+        }
+        if(nativeFile == null)
+        {
+            throw new Exception("Cannot find any of the specified SPICE native files");
+        }
+
         System.out.println(nativeFile.getAbsolutePath());
         System.load(nativeFile.getAbsolutePath());
 
-        //CSPICE cspice = new CSPICE();
+        CSPICE cspice = new CSPICE();
 
         int serverPort = 30672;
         try
@@ -34,13 +52,10 @@ public class App {
             //noop
         }
 
-        //Server rpcServer = ServerBuilder.forPort(serverPort)
-        //        .addService(new mxvService(cspice))
-        //        .build()
-        //        .start();
-
-        File f = new File("C://users/aalbert/Desktop/asd.txt");
-        f.createNewFile();
+        Server rpcServer = ServerBuilder.forPort(serverPort)
+                .addService(new mxvService(cspice))
+                .build()
+                .start();
 
 
         // testing cspice function
@@ -51,18 +66,18 @@ public class App {
         };
         double[] v = new double[]{ 1, 2, 3};
         double[] result;
-        //try
-        //{
-        //    result = cspice.mxv(m, v);
-        //} catch (SpiceErrorException e) {
-        //    System.out.println(e.getMessage());
-        //    return;
-        //}
-        //System.out.println(Arrays.toString(result));
+        try
+        {
+            result = cspice.mxv(m, v);
+        } catch (SpiceErrorException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+        System.out.println(Arrays.toString(result));
 
 
-        //if (rpcServer != null) {
-       //     rpcServer.awaitTermination();
-        //}
+        if (rpcServer != null) {
+            rpcServer.awaitTermination();
+        }
     }
 }

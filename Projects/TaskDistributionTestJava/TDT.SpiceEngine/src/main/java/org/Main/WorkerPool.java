@@ -9,6 +9,8 @@ import org.Main.Spice.MathCalc.OneArg.MathCalcGrpc;
 import org.Main.Spice.MathCalc.OneArg.MathCalcReply;
 import org.Main.Spice.MathCalc.OneArg.MathCalcRequest;
 import org.Main.Spice.MathCalc.OneArg.MathCalcRequest.*;
+import org.Main.Worker.Thread1Worker;
+import org.Main.Worker.Thread2Worker;
 
 import java.io.IOException;
 import java.util.function.Function;
@@ -58,115 +60,11 @@ public class WorkerPool  {
     {
         DistributedTaskState state = new DistributedTaskState(CalcName, _channelCollection.length, BatchSize, ArgFactory, ResponseCallback);
 
-        // TODO: start thread1worker and thread2worker
-        Thread t1 = new Thread();
-        Thread t2 = new Thread();
+        // TODO: start thread1worker and thread2worker pass in state
+        Thread t1 = new Thread(new Thread1Worker(state, _channelCollection, _maxBatchSize, _mathClients));
+        Thread t2 = new Thread(new Thread2Worker(state, _channelCollection, _maxBatchSize, _mathClients));
         t1.start();
         t2.start();
-    }
-
-
-    public void Thread1Worker(DistributedTaskState state) throws InterruptedException {
-        int batchID = 0;
-        int currentBatchSize = state.batchSize;
-        int currentIdx = 0;
-
-        //continue working until the entire batch is processed
-        while (currentIdx < currentBatchSize)
-        {
-            state.requestWaitHandle.waitOne(); // throws InterruptedException
-
-            //send batch request to each worker
-            //send all batch requests to the workers at once
-            //the batches are sent out in waves
-            //this allows the response processor to guarantee in-order evaluation
-
-            for (int i = 0; i < _channelCollection.length && currentIdx < currentBatchSize; ++i)
-            {
-                //make a new batch request for this worker
-                int rqstSize = 0;
-                MathCalcRequest mathRequest = new MathCalcRequest();
-                Builder builder = MathCalcRequest.newBuilder().setBatchID(batchID++).setCalcName(state.calcName);
-                //Calculate the args for this request
-                //this allows the client to provide an arg factory and lazily evaluate arguments
-                //prevents all arguments from being stored in memory at once
-                for (int j = 0; j < _maxBatchSize && currentIdx < currentBatchSize; ++j, ++currentIdx, ++rqstSize)
-                {
-                    double arg = state.argFactory.apply(currentIdx);
-                    mathRequest = builder.setArgs(currentIdx, arg).build();
-                }
-                //dont send request if the batch is empty
-                if (rqstSize == 0)
-                {
-                    continue;
-                }
-                //send request to next worker
-                //add awaitable to stack
-
-                StreamObserver<MathCalcReply> requestTask = new StreamObserver<MathCalcReply>() {
-                    @Override
-                    public void onNext(MathCalcReply value) {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable t) {
-
-                    }
-
-                    @Override
-                    public void onCompleted() {
-
-                    }
-                };
-                _mathClients[i].doMath(mathRequest, requestTask);
-                state.currentTaskBatch.set(i, requestTask);
-            }
-            state.responseWaitHandle.set();
-        }
-    }
-
-    public void Thread2Worker(DistributedTaskState state) throws InterruptedException {
-        //wait for batch responses
-        //separates batch dispatching from result callback processing
-        //allows one thread to push out new requests while this thread evaluates responses
-        //improves performance with non-trivial callbacks
-
-        int cumResponseCount = 0;
-        int batchSize = state.batchSize;
-
-        while (cumResponseCount < batchSize)
-        {
-            state.responseWaitHandle.waitOne(); // throws interrupted exception
-
-            MathCalcReply[] resultClone = new MathCalcReply[_channelCollection.length];
-
-            //wait for all worker responses to return before sending new batches
-            //process the receipts, then repeat the process
-            //cache responses in 2nd buffer
-            for (int i = 0; i < _channelCollection.length; ++i)
-            {
-                StreamObserver<MathCalcReply> task = state.currentTaskBatch.get(i);
-                if (task == null)
-                    continue;
-                StreamObserver<MathCalcReply> response = task;
-                resultClone[i] = response; // TODO
-                state.currentTaskBatch.set(i, null);
-            }
-            //let requester thread send new wave of batches
-            state.requestWaitHandle.set();
-            //process response callbacks while new batch wave is being processed by workers
-            for (int i = 0; i < _channelCollection.length; ++i)
-            {
-                MathCalcReply response = resultClone[i];
-                if(response != null)
-                {
-                    cumResponseCount += response.getResponsesList().size();
-                    // state.ResponseCallback?.Invoke(this, response); // TODO callback function
-                }
-            }
-        }
-        // state.completionSource.SetResult(null); // TODO determine
     }
 
 

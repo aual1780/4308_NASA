@@ -10,7 +10,7 @@ public class Program {
 
     static int responseCount = 0;
 
-    public void main(String[] args) {
+    public static void main(String[] args) {
         String serverPath = "../../../../TDT.Server/bin/Debug/netcoreapp3.1/TDT.Server.exe";
         int initPort = 30672;
         int workerCount = 6;

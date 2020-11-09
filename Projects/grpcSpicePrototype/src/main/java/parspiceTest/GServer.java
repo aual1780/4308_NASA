@@ -19,7 +19,6 @@ package parspiceTest;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
-
 import spice.basic.CSPICE;
 import spice.basic.SpiceErrorException;
 
@@ -34,10 +33,11 @@ public class GServer {
     private static final Logger logger = Logger.getLogger(GServer.class.getName());
 
     private Server server;
-    private CSPICE cspice; // all static
 
     private void LoadSpice(){
-        System.load("./JNISpice"); // sys.load with .dll path
+        // replace with absolute path; find a fix for the future
+        // path to the jnispice .dll
+        System.load("C:/Users/Willie/Documents/schoolStuff/2021Capstone/grpcSpice/JNISpice.dll");
     }
 
     private void start() throws IOException {
@@ -84,6 +84,14 @@ public class GServer {
      * Main launches the server from the command line.
      */
     public static void main(String[] args) throws IOException, InterruptedException {
+        /*
+        LoadSpice();
+        try{
+            CSPICE.str2et("2004 jun 11 19:32:00");
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }*/
         final GServer server = new GServer();
         server.start();
         server.blockUntilShutdown();

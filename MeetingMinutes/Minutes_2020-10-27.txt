@@ -1,0 +1,7 @@
+Roll Call
+- All Here
+
+Austin walked through planned API structure for parSpice consumer library
+
+Team approves of planned structure
+Team will meet with Marcel tomorrow to discuss the same (without Austin, he has a Dr appt)

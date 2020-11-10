@@ -13,6 +13,7 @@ import org.Main.Worker.Thread1Worker;
 import org.Main.Worker.Thread2Worker;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.function.Function;
 import java.util.logging.Logger;
 
@@ -52,11 +53,7 @@ public class WorkerPool  {
     }
 
 
-    public void PerformThreadedDistributedTask(
-            String CalcName,
-            int BatchSize,
-            Function<Integer, Double> ArgFactory,
-            StreamObserver<MathCalcReply> ResponseCallback) // TODO Task replacement
+    public void PerformThreadedDistributedTask(String CalcName, int BatchSize, Function<Integer, Double> ArgFactory, Function2<Object, MathCalcReply, Void> ResponseCallback)
     {
         DistributedTaskState state = new DistributedTaskState(CalcName, _channelCollection.length, BatchSize, ArgFactory, ResponseCallback);
 
@@ -69,9 +66,8 @@ public class WorkerPool  {
 
 
 
-    public void PerformDistributedTask(String CalcName, int BatchSize, Function<Integer, Double> ArgFactory, StreamObserver<MathCalcReply> ResponseCallback)
-    {
-        DistributedTaskState state = new DistributedTaskState(CalcName, _channelCollection.length, BatchSize, ArgFactory,ResponseCallback);
+    public void PerformDistributedTask(String CalcName, int BatchSize, Function<Integer, Double> ArgFactory,  Function2<Object, MathCalcReply, Void> ResponseCallback) throws InterruptedException {
+        DistributedTaskState state = new DistributedTaskState(CalcName, _channelCollection.length, BatchSize, ArgFactory, ResponseCallback);
 
         int batchID = 0;
         int currentBatchSize = state.batchSize;
@@ -85,6 +81,7 @@ public class WorkerPool  {
                 state.currentTaskBatch.set(i, null);
             }
 
+            ArrayList<MathCalcReply> responses = new ArrayList<>();
             //send batch cluster to each worker
             //send batches to each cluster at once
             for (int i = 0; i < _channelCollection.length && currentIdx < currentBatchSize; ++i)
@@ -111,18 +108,12 @@ public class WorkerPool  {
                 StreamObserver<MathCalcReply> requestTask = new StreamObserver<MathCalcReply>() {
                     @Override
                     public void onNext(MathCalcReply value) {
-
+                        responses.add(value);
                     }
-
                     @Override
-                    public void onError(Throwable t) {
-
-                    }
-
+                    public void onError(Throwable t) {}
                     @Override
-                    public void onCompleted() {
-
-                    }
+                    public void onCompleted() {}
                 };
                 _mathClients[i].doMath(mathRequest, requestTask);
                 state.currentTaskBatch.set(i, requestTask);
@@ -135,8 +126,7 @@ public class WorkerPool  {
                 StreamObserver<MathCalcReply> task = state.currentTaskBatch.get(i);
                 if (task == null)
                     continue;
-                StreamObserver<MathCalcReply> response = task; // TODO
-                state.responseCallback?.Invoke(this, response); // TODO callback function in replacement
+                state.responseCallback.apply(this, responses.get(i));
             }
         }
     }

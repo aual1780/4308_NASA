@@ -1,9 +1,9 @@
 package org.Main;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.function.Function;
 
-import io.grpc.stub.StreamObserver;
 import org.Main.Spice.MathCalc.OneArg.*;
 
 public class Program {
@@ -26,94 +26,67 @@ public class Program {
             return;
         }
 
-        String log1 = null;
-        String log2 = null;
-        String log3 = null;
-        String log4 = null;
-        String log5 = null;
-        String log6 = null;
-
-        // TODO: make a mathcalc callback function
-        //throw away init code
-        engine.PerformDistributedTask(mathFunc, 10, argFactory, MathCalcCallback);
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////
-        responseCount = 0;
-        long startTime = System.currentTimeMillis();
-        engine.PerformDistributedTask(mathFunc, batchSize, argFactory, MathCalcCallback);
-        long stopTime = System.currentTimeMillis();
-        log3 = "Distributed call elapsed time (millis) " + (stopTime-startTime);
-
-        responseCount = 0;
-        startTime = System.currentTimeMillis();
-        engine.PerformDistributedTask(mathFunc, batchSize, argFactory, MathCalcCallback);
-        stopTime = System.currentTimeMillis();
-        log4 = "Distributed call elapsed time (millis) " + (stopTime-startTime);
-
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////
-        responseCount = 0;
-        startTime = System.currentTimeMillis();
-        engine.PerformThreadedDistributedTask(mathFunc, batchSize, argFactory, MathCalcCallback);
-        stopTime = System.currentTimeMillis();
-        log1 = "Distributed threaded call elapsed time (millis) " + (stopTime-startTime);
-
-        responseCount = 0;
-        startTime = System.currentTimeMillis();
-        engine.PerformThreadedDistributedTask(mathFunc, batchSize, argFactory, MathCalcCallback);
-        stopTime = System.currentTimeMillis();
-        log2 = "Distributed threaded call elapsed time (millis) " + (stopTime-startTime);
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////
-        responseCount = 0;
-        startTime = System.currentTimeMillis();
-        PerformNondistributedTask(mathFunc, maxBatchSize, batchSize, argFactory, MathCalcCallback);
-        stopTime = System.currentTimeMillis();
-        log5 = "Nondistributed call elapsed time (millis) " + (stopTime-startTime);
-
-        //responseCount = 0;
-        //long startTime = System.currentTimeMillis();
-        //PerformNondistributedTask(mathFunc, maxBatchSize, batchSize, argFactory, MathCalcCallback);
-        //stopTime = System.currentTimeMillis();
-        //log6 = "Nondistributed call elapsed time (millis) " + (stopTime-startTime);
-
-
-        System.out.printf(log1);
-        System.out.printf(log2);
-        System.out.printf(log3);
-        System.out.printf(log4);
-        System.out.printf(log5);
-        System.out.printf(log6);
-
-        System.out.printf("Press any key to exit...");
-    }
-
-
-    static void MathCalcCallback(Object Sender, MathCalcReply reply) throws InterruptedException {
-        responseCount += reply.getResponsesCount();
-        System.out.printf("Response group returned: %d", reply.getBatchID());
-        System.out.printf("Cumulative responses returned: %d}", responseCount);
-        Thread.sleep(20);
-    }
-
-
-    static void PerformNondistributedTask(String CalcName, int MaxBatchSize, int BatchSize, Function<Integer, Double> ArgFactory, StreamObserver<MathCalcReply> ResponseCallback)
-    {
-        String funcName = CalcName;
-        String flags = BindingFlags.Public | BindingFlags.Static;
-        Function func = typeof(MathOperations).GetMethod(funcName, flags);
-        var funcDelegate = func.CreateDelegate<Function<Double, Double>>();
-
-        // TODO MathCalc Reply
-        MathCalcReply reply = new MathCalcReply();
-        for (int i = 0; i < BatchSize; ++i)
-        {
-            double arg = ArgFactory.apply(i);
-            double result = funcDelegate(arg);
-            reply.getResponsesList().add(result);
-            if (i % MaxBatchSize == MaxBatchSize - 1)
-            {
-                ResponseCallback?.Invoke(null, reply);
-                reply = new MathCalcReply();
+        Function2<Object, MathCalcReply, Void> mathCalcCallBack = new Function2<Object, MathCalcReply, Void>() {
+            @Override
+            public Void apply(Object object, MathCalcReply reply) throws InterruptedException {
+                responseCount += reply.getResponsesCount();
+                System.out.printf("Response group returned: %d", reply.getBatchID());
+                System.out.printf("Cumulative responses returned: %d}", responseCount);
+                Thread.sleep(20);
+                return null;
             }
+        };
+
+        ArrayList<String> logs = new ArrayList<>();
+
+        long startTime;
+        long stopTime;
+        //throw away init code
+        try {
+        engine.PerformDistributedTask(mathFunc, 10, argFactory, mathCalcCallBack);
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////
+        responseCount = 0;
+        startTime = System.currentTimeMillis();
+        engine.PerformDistributedTask(mathFunc, batchSize, argFactory, mathCalcCallBack);
+        stopTime = System.currentTimeMillis();
+        logs.add("Distributed call elapsed time (millis) " + (stopTime-startTime));
+
+        responseCount = 0;
+        startTime = System.currentTimeMillis();
+
+            engine.PerformDistributedTask(mathFunc, batchSize, argFactory, mathCalcCallBack);
+
+        stopTime = System.currentTimeMillis();
+        logs.add("Distributed call elapsed time (millis) " + (stopTime-startTime));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////
+        responseCount = 0;
+        startTime = System.currentTimeMillis();
+        engine.PerformThreadedDistributedTask(mathFunc, batchSize, argFactory, mathCalcCallBack);
+        stopTime = System.currentTimeMillis();
+        logs.add("Distributed threaded call elapsed time (millis) " + (stopTime-startTime));
+
+        responseCount = 0;
+        startTime = System.currentTimeMillis();
+        engine.PerformThreadedDistributedTask(mathFunc, batchSize, argFactory, mathCalcCallBack);
+        stopTime = System.currentTimeMillis();
+        logs.add("Distributed threaded call elapsed time (millis) " + (stopTime-startTime));
+
+
+        for (String log: logs) {
+            System.out.printf(log);
         }
     }
+
+    public interface Callback  {
+        static void MathCalcCallback(Object Sender, MathCalcReply reply) throws InterruptedException {
+            responseCount += reply.getResponsesCount();
+            System.out.printf("Response group returned: %d", reply.getBatchID());
+            System.out.printf("Cumulative responses returned: %d}", responseCount);
+            Thread.sleep(20);
+        }
+    }
+
 }

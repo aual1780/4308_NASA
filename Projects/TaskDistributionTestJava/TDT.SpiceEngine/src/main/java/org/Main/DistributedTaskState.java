@@ -11,13 +11,13 @@ public class DistributedTaskState implements Runnable {
     public int workerCount;
     public int batchSize;
     public Function<Integer, Double> argFactory;
-    public StreamObserver<MathCalcReply> responseCallback;
+    public Function2<Object, MathCalcReply, Void> responseCallback;
     public AutoResetEvent requestWaitHandle;
     public AutoResetEvent responseWaitHandle;
     public ArrayList<StreamObserver<MathCalcReply>> currentTaskBatch;
-    public TaskCompletionSource<Object> completionSource = new TaskCompletionSource<Object>(); // TODO determine replacement
+//    public TaskCompletionSource<Object> completionSource = new TaskCompletionSource<Object>();
 
-    public DistributedTaskState(String CalcName, int WorkerCount, int BatchSize, Function<Integer, Double> ArgFactory, StreamObserver<MathCalcReply> ResponseCallback) {
+    public DistributedTaskState(String CalcName, int WorkerCount, int BatchSize, Function<Integer, Double> ArgFactory, Function2<Object, MathCalcReply, Void> ResponseCallback) {
         this.calcName = CalcName;
         this.workerCount = WorkerCount;
         this.batchSize = BatchSize;

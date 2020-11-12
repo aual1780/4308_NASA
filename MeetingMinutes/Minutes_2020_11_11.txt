@@ -1,0 +1,14 @@
+Roll Call
+- All here
+
+Marcell meeting
+
+Marcell approves API change
+void func(args, resultArr) => arr func(args)
+
+Marcell wants a brief demo on grpc in the future
+
+Scope confirmation: only cspice, not spice helper funcs
+
+Plan for presentation to be shared between class and JPL
+

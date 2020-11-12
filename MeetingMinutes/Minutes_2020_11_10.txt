@@ -1,0 +1,30 @@
+Roll Call
+- All here
+
+System requirements doc added to git
+
+
+Benchmark design progress
+- Assigned to Joel
+- Early doc in progress
+- Good progress to design bench that prevents JVM super optimizations
+- Waiting for proto project before full test comparison 
+
+
+grpc Marshalling
+- design in place
+- work in progress
+- waiting for task/thread port conversion help
+  - Assigned to Austin
+
+
+SPICE concerns
+- some func use following sig: void func(args, resultArr)
+- this is incompatible with parspice
+- explore API update to allow returning resultArr directly
+
+
+Must ensure that we are not porting spice helper tools (only cspice)
+
+
+Presentation in progress

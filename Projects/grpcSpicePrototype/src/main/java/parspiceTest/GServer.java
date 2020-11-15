@@ -37,7 +37,7 @@ public class GServer {
     private void LoadSpice(){
         // replace with absolute path; find a fix for the future
         // path to the jnispice .dll
-        System.load("C:/Users/Willie/Documents/schoolStuff/2021Capstone/grpcSpice/JNISpice.dll");
+        System.load("C:/Users/nicho/Class/JNISpice/lib/JNISpice.dll");
     }
 
     private void start() throws IOException {

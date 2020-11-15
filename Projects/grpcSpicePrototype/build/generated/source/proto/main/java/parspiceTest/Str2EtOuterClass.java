@@ -3,8 +3,8 @@
 
 package parspiceTest;
 
-public final class parspiceTesting {
-  private parspiceTesting() {}
+public final class Str2EtOuterClass {
+  private Str2EtOuterClass() {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistryLite registry) {
   }
@@ -33,12 +33,11 @@ public final class parspiceTesting {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\017grpcSpice.proto\022\014parspiceTest\"\031\n\tStr2E" +
-      "tReq\022\014\n\004time\030\001 \001(\t\"\031\n\tStr2EtRep\022\014\n\004time\030" +
-      "\001 \001(\0012I\n\006Str2Et\022?\n\tParStr2Et\022\027.parspiceT" +
-      "est.Str2EtReq\032\027.parspiceTest.Str2EtRep\"\000" +
-      "B\'\n\014parspiceTestB\017parspiceTestingP\001\242\002\003HL" +
-      "Wb\006proto3"
+      "\n\014str2et.proto\022\014parspiceTest\"\031\n\tStr2EtRe" +
+      "q\022\014\n\004time\030\001 \001(\t\"\031\n\tStr2EtRep\022\014\n\004time\030\001 \001" +
+      "(\0012I\n\006Str2Et\022?\n\tParStr2Et\022\027.parspiceTest" +
+      ".Str2EtReq\032\027.parspiceTest.Str2EtRep\"\000B\026\n" +
+      "\014parspiceTestP\001\242\002\003HLWb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

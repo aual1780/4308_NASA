@@ -29,7 +29,7 @@ dependencies {
     runtimeOnly "io.grpc:grpc-netty-shaded:${grpcVersion}"
 
     // path to a JNISpice.jar file
-    compile files('./JNISpice.jar')
+    compile files('C:/Users/nicho/Class/JNISpice/src/JNISpice')
 }
 
 protobuf {

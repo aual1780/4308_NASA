@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "parspiceTest";
+option objc_class_prefix = "HLW";
+
+package parspiceTest;
+
+// The greeting service definition.
+service Str2Et {
+  // Sends a greeting
+  rpc ParStr2Et (Str2EtReq) returns (Str2EtRep) {}
+}
+
+// The request message containing the user's name.
+message Str2EtReq {
+  string time = 1;
+}
+
+// The response message containing the seconds past since J2000
+message Str2EtRep {
+  double time = 1;
+}

@@ -22,7 +22,7 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.33.0)",
-    comments = "Source: grpcSpice.proto")
+    comments = "Source: str2et.proto")
 public final class Str2EtGrpc {
 
   private Str2EtGrpc() {}
@@ -266,7 +266,7 @@ public final class Str2EtGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return parspiceTest.parspiceTesting.getDescriptor();
+      return parspiceTest.Str2EtOuterClass.getDescriptor();
     }
 
     @java.lang.Override

@@ -1,20 +1,15 @@
 package parspiceTest;
 
-import java.util.List;
-import java.util.*;
+import java.util.ArrayList;
 public abstract class ParCommand{
 
     private ArrayList args; //ArrayLists chosen due to their thread-safe nature
-    private String name;
-    public String getFuncInfo(){
-        return this.name;
-    };
+    protected String name;
+    public String getFuncInfo(){return name;};
     public abstract void addArg(String arg);
     public abstract ArrayList getArg(int index);
-    public int getNumArgs(){
-        return args.size();
-    }
-    public abstract void distribute();
+    public abstract ArrayList getArg();
+    public abstract ParResponse distribute();
     
     //https://github.com/aual1780/4308_NASA/blob/master/Projects/Tutorials/src/Main.java
 }

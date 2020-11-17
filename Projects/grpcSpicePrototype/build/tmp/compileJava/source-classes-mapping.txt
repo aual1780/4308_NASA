@@ -1,54 +1,10 @@
-parspiceTest/FurnshParCommand.java
- parspiceTest.FurnshParCommand
-parspiceTest/ParStrEt.java
- parspiceTest.ParStrEt
-parspiceTest/FurnshOuterClass.java
- parspiceTest.FurnshOuterClass
-parspiceTest/ParFurnsh.java
- parspiceTest.ParFurnsh
-parStr2Et/Str2EtRep.java
- parStr2Et.Str2EtRep
- parStr2Et.Str2EtRep$1
- parStr2Et.Str2EtRep$Builder
-parFurnsh/FurnshRepOrBuilder.java
- parFurnsh.FurnshRepOrBuilder
-parspiceTest/GClient.java
- parspiceTest.GClient
-parspiceTest/FurnshReq.java
- parspiceTest.FurnshReq
- parspiceTest.FurnshReq$1
- parspiceTest.FurnshReq$Builder
-parspiceTest/ParCommand.java
- parspiceTest.ParCommand
-parFurnsh/FurnshReqOrBuilder.java
- parFurnsh.FurnshReqOrBuilder
-parspiceTest/FurnshGrpc.java
- parspiceTest.FurnshGrpc
- parspiceTest.FurnshGrpc$1
- parspiceTest.FurnshGrpc$2
- parspiceTest.FurnshGrpc$3
- parspiceTest.FurnshGrpc$FurnshBaseDescriptorSupplier
- parspiceTest.FurnshGrpc$FurnshBlockingStub
- parspiceTest.FurnshGrpc$FurnshFileDescriptorSupplier
- parspiceTest.FurnshGrpc$FurnshFutureStub
- parspiceTest.FurnshGrpc$FurnshImplBase
- parspiceTest.FurnshGrpc$FurnshMethodDescriptorSupplier
- parspiceTest.FurnshGrpc$FurnshStub
- parspiceTest.FurnshGrpc$MethodHandlers
-parspiceTest/FurnshReqOrBuilder.java
- parspiceTest.FurnshReqOrBuilder
-parFurnsh/FurnshRep.java
- parFurnsh.FurnshRep
- parFurnsh.FurnshRep$1
- parFurnsh.FurnshRep$Builder
-parStr2Et/Str2EtReq.java
- parStr2Et.Str2EtReq
- parStr2Et.Str2EtReq$1
- parStr2Et.Str2EtReq$Builder
-parStr2Et/Str2EtReqOrBuilder.java
- parStr2Et.Str2EtReqOrBuilder
-parspiceTest/ParFurnshOuterClass.java
- parspiceTest.ParFurnshOuterClass
+parspiceTest/GServer.java
+ parspiceTest.GServer
+ parspiceTest.GServer$1
+parspiceTest/FurnshBundleOrBuilder.java
+ parspiceTest.FurnshBundleOrBuilder
+parspiceTest/FurnshObject.java
+ parspiceTest.FurnshObject
 parspiceTest/Str2EtReq.java
  parspiceTest.Str2EtReq
  parspiceTest.Str2EtReq$1
@@ -66,35 +22,74 @@ parspiceTest/Str2EtGrpc.java
  parspiceTest.Str2EtGrpc$Str2EtImplBase
  parspiceTest.Str2EtGrpc$Str2EtMethodDescriptorSupplier
  parspiceTest.Str2EtGrpc$Str2EtStub
+parspiceTest/Parspice.java
+ parspiceTest.Parspice
+parspiceTest/Str2EtBundle.java
+ parspiceTest.Str2EtBundle
+ parspiceTest.Str2EtBundle$1
+ parspiceTest.Str2EtBundle$Builder
 parspiceTest/Str2EtReqOrBuilder.java
  parspiceTest.Str2EtReqOrBuilder
-parFurnsh/FurnshReq.java
- parFurnsh.FurnshReq
- parFurnsh.FurnshReq$1
- parFurnsh.FurnshReq$Builder
+parspiceTest/Str2EtBundleOrBuilder.java
+ parspiceTest.Str2EtBundleOrBuilder
+parspiceTest/FurnshReq.java
+ parspiceTest.FurnshReq
+ parspiceTest.FurnshReq$1
+ parspiceTest.FurnshReq$Builder
+parspiceTest/ParCommand.java
+ parspiceTest.ParCommand
 parspiceTest/Str2EtRep.java
  parspiceTest.Str2EtRep
  parspiceTest.Str2EtRep$1
  parspiceTest.Str2EtRep$Builder
-parStr2Et/Str2EtRepOrBuilder.java
- parStr2Et.Str2EtRepOrBuilder
 parspiceTest/FurnshRepOrBuilder.java
  parspiceTest.FurnshRepOrBuilder
+parspiceTest/ParSpiceGrpc.java
+ parspiceTest.ParSpiceGrpc
+ parspiceTest.ParSpiceGrpc$1
+ parspiceTest.ParSpiceGrpc$2
+ parspiceTest.ParSpiceGrpc$3
+ parspiceTest.ParSpiceGrpc$MethodHandlers
+ parspiceTest.ParSpiceGrpc$ParSpiceBaseDescriptorSupplier
+ parspiceTest.ParSpiceGrpc$ParSpiceBlockingStub
+ parspiceTest.ParSpiceGrpc$ParSpiceFileDescriptorSupplier
+ parspiceTest.ParSpiceGrpc$ParSpiceFutureStub
+ parspiceTest.ParSpiceGrpc$ParSpiceImplBase
+ parspiceTest.ParSpiceGrpc$ParSpiceMethodDescriptorSupplier
+ parspiceTest.ParSpiceGrpc$ParSpiceStub
 parspiceTest/Str2EtRepOrBuilder.java
  parspiceTest.Str2EtRepOrBuilder
-parFurnsh/ParFurnshOuterClass.java
- parFurnsh.ParFurnshOuterClass
-parspiceTest/parspiceTesting.java
- parspiceTest.parspiceTesting
-parspiceTest/Str2EtOuterClass.java
- parspiceTest.Str2EtOuterClass
+parspiceTest/ParResponse.java
+ parspiceTest.ParResponse
+parspiceTest/FurnshReqOrBuilder.java
+ parspiceTest.FurnshReqOrBuilder
+parspiceTest/FurnshGrpc.java
+ parspiceTest.FurnshGrpc
+ parspiceTest.FurnshGrpc$1
+ parspiceTest.FurnshGrpc$2
+ parspiceTest.FurnshGrpc$3
+ parspiceTest.FurnshGrpc$FurnshBaseDescriptorSupplier
+ parspiceTest.FurnshGrpc$FurnshBlockingStub
+ parspiceTest.FurnshGrpc$FurnshFileDescriptorSupplier
+ parspiceTest.FurnshGrpc$FurnshFutureStub
+ parspiceTest.FurnshGrpc$FurnshImplBase
+ parspiceTest.FurnshGrpc$FurnshMethodDescriptorSupplier
+ parspiceTest.FurnshGrpc$FurnshStub
+ parspiceTest.FurnshGrpc$MethodHandlers
+parspiceTest/FurnshBundle.java
+ parspiceTest.FurnshBundle
+ parspiceTest.FurnshBundle$1
+ parspiceTest.FurnshBundle$Builder
 parspiceTest/FurnshRep.java
  parspiceTest.FurnshRep
  parspiceTest.FurnshRep$1
  parspiceTest.FurnshRep$Builder
-parspiceTest/GServer.java
- parspiceTest.GServer
- parspiceTest.GServer$1
- parspiceTest.GServer$Str2EtImpl
-parStr2Et/ParStrEt.java
- parStr2Et.ParStrEt
+parspiceTest/FurnshParCommand.java
+ parspiceTest.FurnshParCommand
+parspiceTest/GClient.java
+ parspiceTest.GClient
+parspiceTest/ParCmdHandler.java
+ parspiceTest.GrpcFurnshHandler
+ parspiceTest.GrpcSpkposHandler
+ parspiceTest.GrpcStr2EtHandler
+ parspiceTest.ParCmdHandler

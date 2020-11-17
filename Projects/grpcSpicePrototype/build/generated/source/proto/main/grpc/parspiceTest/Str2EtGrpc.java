@@ -17,12 +17,12 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
 /**
  * <pre>
- * The greeting service definition.
+ *&#47; Str2Et : : &lt;basic info about furnsh&gt;
  * </pre>
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.33.0)",
-    comments = "Source: str2et.proto")
+    comments = "Source: parspice.proto")
 public final class Str2EtGrpc {
 
   private Str2EtGrpc() {}
@@ -107,7 +107,7 @@ public final class Str2EtGrpc {
 
   /**
    * <pre>
-   * The greeting service definition.
+   *&#47; Str2Et : : &lt;basic info about furnsh&gt;
    * </pre>
    */
   public static abstract class Str2EtImplBase implements io.grpc.BindableService {
@@ -137,7 +137,7 @@ public final class Str2EtGrpc {
 
   /**
    * <pre>
-   * The greeting service definition.
+   *&#47; Str2Et : : &lt;basic info about furnsh&gt;
    * </pre>
    */
   public static final class Str2EtStub extends io.grpc.stub.AbstractAsyncStub<Str2EtStub> {
@@ -166,7 +166,7 @@ public final class Str2EtGrpc {
 
   /**
    * <pre>
-   * The greeting service definition.
+   *&#47; Str2Et : : &lt;basic info about furnsh&gt;
    * </pre>
    */
   public static final class Str2EtBlockingStub extends io.grpc.stub.AbstractBlockingStub<Str2EtBlockingStub> {
@@ -194,7 +194,7 @@ public final class Str2EtGrpc {
 
   /**
    * <pre>
-   * The greeting service definition.
+   *&#47; Str2Et : : &lt;basic info about furnsh&gt;
    * </pre>
    */
   public static final class Str2EtFutureStub extends io.grpc.stub.AbstractFutureStub<Str2EtFutureStub> {
@@ -266,7 +266,7 @@ public final class Str2EtGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return parspiceTest.Str2EtOuterClass.getDescriptor();
+      return parspiceTest.Parspice.getDescriptor();
     }
 
     @java.lang.Override

@@ -17,10 +17,6 @@
 package parspiceTest;
 
 import io.grpc.Server;
-import io.grpc.ServerBuilder;
-import io.grpc.stub.StreamObserver;
-import spice.basic.CSPICE;
-import spice.basic.SpiceErrorException;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -37,7 +33,7 @@ public class GServer {
     private void LoadSpice(){
         // replace with absolute path; find a fix for the future
         // path to the jnispice .dll
-        System.load("C:/Users/nicho/Class/JNISpice/lib/JNISpice.dll");
+        System.load(System.getProperty("user.dir") + "/JNISpice.dll");
     }
 
     private void start() throws IOException {
@@ -45,10 +41,10 @@ public class GServer {
 
         /* The port on which the server should run */
         int port = 50051;
-        server = ServerBuilder.forPort(port)
+        /*server = ServerBuilder.forPort(port)
                 .addService(new Str2EtImpl())
                 .build()
-                .start();
+                .start();*/
         logger.info("Server started, listening on " + port);
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override
@@ -96,7 +92,7 @@ public class GServer {
         server.start();
         server.blockUntilShutdown();
     }
-
+/*
     static class Str2EtImpl extends Str2EtGrpc.Str2EtImplBase {
 
         @Override
@@ -113,5 +109,5 @@ public class GServer {
             responseObserver.onNext(reply);
             responseObserver.onCompleted();
         }
-    }
+    }*/
 }

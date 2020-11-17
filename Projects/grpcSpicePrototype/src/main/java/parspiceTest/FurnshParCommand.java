@@ -1,14 +1,16 @@
 package parspiceTest;
-import java.util.*;
-import spice.basic.CSPICE;
-import spice.basic.SpiceErrorException;
+import java.util.ArrayList;
 
 public class FurnshParCommand extends ParCommand {
-    public String name = "furnsh";
-    private List args = new ArrayList();
+
+    private ArrayList args = new ArrayList<String>();
+
+    public FurnshParCommand(){
+        name = "furnsh";
+    }
 
     public void addArg(String arg){
-        args.add(arg);
+        args.add(new FurnshObject(arg));
         return;
     }
 
@@ -18,7 +20,11 @@ public class FurnshParCommand extends ParCommand {
         return (arg);
     }
 
-    public void distribute(){
-        return;
+    public ArrayList getArg(){
+        return (args);
+    }
+
+    public ParResponse distribute(){
+        return ParCmdHandler.ParProcess(this);
     }
 }

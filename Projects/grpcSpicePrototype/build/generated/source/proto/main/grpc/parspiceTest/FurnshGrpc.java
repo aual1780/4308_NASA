@@ -19,7 +19,7 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.33.0)",
-    comments = "Source: furnsh.proto")
+    comments = "Source: parspice.proto")
 public final class FurnshGrpc {
 
   private FurnshGrpc() {}
@@ -251,7 +251,7 @@ public final class FurnshGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return parspiceTest.FurnshOuterClass.getDescriptor();
+      return parspiceTest.Parspice.getDescriptor();
     }
 
     @java.lang.Override

@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+option java_multiple_files = true;
+option java_package = "parspiceTest";
+option objc_class_prefix = "HLW";
+
+package parspiceTest;
+
+service ParSpice {
+  // Sends furnsh request
+  rpc ParFurnsh (FurnshBundle) returns (google.protobuf.Empty) {}
+  rpc ParStr2Et (Str2EtBundle) returns (Str2EtRep) {}
+}
+
+/// Furnsh : <basic info about furnsh>
+message FurnshBundle {
+  repeated FurnshReq requests = 1;
+}
+
+// The request message name of kernel file to load
+message FurnshReq {
+  string file = 1;
+}
+
+// Null response
+message FurnshRep { }
+
+/// Str2Et : : <basic info about furnsh>
+message Str2EtBundle {
+  repeated Str2EtRep requests = 1;
+}
+
+message Str2EtReq {
+  string time = 1;
+}
+
+message Str2EtRep {
+  repeated double time = 1;
+}

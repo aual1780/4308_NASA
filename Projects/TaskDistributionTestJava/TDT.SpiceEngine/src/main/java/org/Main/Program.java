@@ -12,11 +12,11 @@ public class Program {
 
     static int responseCount = 0;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Throwable {
         String serverPath = "../../../../TDT.Server/bin/Debug/netcoreapp3.1/TDT.Server.exe";
         int initPort = 30672;
         int workerCount = 6;
-        String mathFunc = nameof(MathCalc.MathTransform2); // TODO
+        String mathFunc = "MathTransform2"; // nameof(MathCalc.MathTransform2); // TODID (quickfix for now)
         int maxBatchSize = 100000;
         int batchSize = 1000000;
         Function<Integer, Double> argFactory = x -> Double.valueOf(x);

@@ -19,7 +19,7 @@ private static final long serialVersionUID = 0L;
   private MathCalcRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  public MathCalcRequest() {
+  private MathCalcRequest() {
     calcName_ = "";
     args_ = emptyDoubleList();
   }

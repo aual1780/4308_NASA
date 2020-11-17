@@ -18,6 +18,10 @@ public class CancellableThreadDelegate<T_Arg> implements Runnable
 
     public void run()
     {
-        _threadStartCallback.run(_arg, _token);
+        try {
+            _threadStartCallback.run(_arg, _token);
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
     }
 }

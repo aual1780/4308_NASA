@@ -52,8 +52,8 @@ public class Thread1Worker implements CancellableThreadRunnable<DistributedTaskS
             {
                 //make a new batch request for this worker
                 int rqstSize = 0;
-                MathCalcRequest mathRequest = new MathCalcRequest();
                 MathCalcRequest.Builder builder = MathCalcRequest.newBuilder().setBatchID(batchID++).setCalcName(calcName);
+                MathCalcRequest mathRequest = builder.build();
                 //Calculate the args for this request
                 //this allows the client to provide an arg factory and lazily evaluate arguments
                 //prevents all arguments from being stored in memory at once

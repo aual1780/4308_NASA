@@ -1,4 +1,4 @@
-package org.Main;
+package org.Main.Worker;
 
 @FunctionalInterface
 interface Function2<In1, In2, Out> {

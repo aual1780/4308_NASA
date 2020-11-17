@@ -165,7 +165,7 @@ public class JoinableFutureFactory {
 	}
 
 	/**
-	 * Responds to calls to {@link JoinableFutureFactory.MainThreadAwaiter#onCompleted} by scheduling a continuation to
+	 * Responds to calls to {@link MainThreadAwaiter#onCompleted} by scheduling a continuation to
 	 * execute on the Main thread.
 	 *
 	 * @param callback The callback to invoke.
@@ -941,7 +941,7 @@ public class JoinableFutureFactory {
 		/**
 		 * Stores execution callbacks for {@link #addExecutingCallback}.
 		 */
-		private final ListOfOftenOne<JoinableFuture.ExecutionQueue> executingCallbacks = new ListOfOftenOne<>();
+		private final ListOfOftenOne<ExecutionQueue> executingCallbacks = new ListOfOftenOne<>();
 
 		/**
 		 * Initializes a new instance of the {@link SingleExecuteProtector} class.
@@ -1087,7 +1087,7 @@ public class JoinableFutureFactory {
 		}
 
 		/**
-		 * Invokes {@link JoinableFuture.ExecutionQueue#onExecuting} handler.
+		 * Invokes {@link ExecutionQueue#onExecuting} handler.
 		 */
 		private void onExecuting() {
 //                if (ThreadingEventSource.Instance.IsEnabled())
@@ -1098,7 +1098,7 @@ public class JoinableFutureFactory {
 			// While raising the event, automatically remove the handlers since we'll only
 			// raise them once, and we'd like to avoid holding references that may extend
 			// the lifetime of our recipients.
-			Iterator<JoinableFuture.ExecutionQueue> enumerator = this.executingCallbacks.iterateAndClear();
+			Iterator<ExecutionQueue> enumerator = this.executingCallbacks.iterateAndClear();
 			while (enumerator.hasNext()) {
 				enumerator.next().onExecuting();
 			}

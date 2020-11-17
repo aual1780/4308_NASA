@@ -382,7 +382,7 @@ public class JoinableFutureContext implements HangReportContributor, Disposable 
 			assert added;
 		}
 
-		if (future.getState().contains(JoinableFuture.JoinableFutureFlag.SYNCHRONOUSLY_BLOCKING_MAIN_THREAD)) {
+		if (future.getState().contains(JoinableFutureFlag.SYNCHRONOUSLY_BLOCKING_MAIN_THREAD)) {
 			synchronized (initializingSynchronouslyMainThreadTasks) {
 				initializingSynchronouslyMainThreadTasks.push(future);
 			}

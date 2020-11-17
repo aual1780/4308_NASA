@@ -1,71 +1,76 @@
 package org.Main.Worker;
 
+import com.tunnelvisionlabs.util.concurrent.CancellationToken;
 import io.grpc.Channel;
 import io.grpc.stub.StreamObserver;
-import org.Main.DistributedTaskState;
+import org.Main.AutoResetEvent;
+import org.Main.AwaitableStreamObserver;
+import org.Main.CancellableThreadRunnable;
 import org.Main.Spice.MathCalc.OneArg.MathCalcGrpc;
 import org.Main.Spice.MathCalc.OneArg.MathCalcGrpc.*;
 import org.Main.Spice.MathCalc.OneArg.MathCalcReply;
 
-public class Thread2Worker implements Runnable {
+import java.util.ArrayList;
+import java.util.function.Function;
 
-    DistributedTaskState state;
-    Channel[] _channelCollection;
-    int _maxBatchSize;
-    MathCalcStub[] _mathClients;
+public class Thread2Worker implements CancellableThreadRunnable<DistributedTaskState> {
 
-    public Thread2Worker(DistributedTaskState state, Channel[] channelCollection, int maxBatchSize, MathCalcStub[] mathClients){
-        this.state = state;
-        this._channelCollection = channelCollection;
-        this._maxBatchSize = maxBatchSize;
-        this._mathClients = mathClients;
+    public Thread2Worker(){
+
     }
 
     @Override
-    public void run() {
+    public void run(DistributedTaskState state, CancellationToken token) throws Throwable {
+        final Channel[] channelCollection = state.getWorkerPoolState().getChannelCollection();
+
+        final int batchSize = state.getBatchSize();
+        final AutoResetEvent requestWaitHandle = state.getRequestWaitHandle();
+        final AutoResetEvent responseWaitHandle = state.getResponseWaitHandle();
+        final Function2<Object, MathCalcReply, Void> responseCallback = state.getResponseCallback();
+        final ArrayList<AwaitableStreamObserver<MathCalcReply>> currentTaskWave = state.getCurrentTaskWave();
+
         //wait for batch responses
         //separates batch dispatching from result callback processing
         //allows one thread to push out new requests while this thread evaluates responses
         //improves performance with non-trivial callbacks
 
         int cumResponseCount = 0;
-        int batchSize = state.batchSize;
 
-        while (cumResponseCount < batchSize)
+        while (cumResponseCount < batchSize && !token.isCancellationRequested())
         {
             try {
-                state.responseWaitHandle.waitOne(); // throws interrupted exception
+                responseWaitHandle.waitOne(); // throws interrupted exception
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-            MathCalcReply[] resultClone = new MathCalcReply[_channelCollection.length];
+            MathCalcReply[] resultClone = new MathCalcReply[channelCollection.length];
 
             //wait for all worker responses to return before sending new batches
             //process the receipts, then repeat the process
             //cache responses in 2nd buffer
-            for (int i = 0; i < _channelCollection.length; ++i)
+            for (int i = 0; i < channelCollection.length; ++i)
             {
-                StreamObserver<MathCalcReply> task = state.currentTaskBatch.get(i);
+                AwaitableStreamObserver<MathCalcReply> task = currentTaskWave.get(i);
                 if (task == null)
                     continue;
-                StreamObserver<MathCalcReply> response = task;
-                resultClone[i] = response; // TODO
-                state.currentTaskBatch.set(i, null);
+                MathCalcReply response = task.awaitValue();
+                resultClone[i] = response; // TODID wait for real response
+                currentTaskWave.set(i, null);
             }
             //let requester thread send new wave of batches
-            state.requestWaitHandle.set();
+            requestWaitHandle.set();
             //process response callbacks while new batch wave is being processed by workers
-            for (int i = 0; i < _channelCollection.length; ++i)
+            for (int i = 0; i < channelCollection.length; ++i)
             {
                 MathCalcReply response = resultClone[i];
                 if(response != null)
                 {
                     cumResponseCount += response.getResponsesList().size();
-                    // state.ResponseCallback?.Invoke(this, response); // TODO callback function
+                    responseCallback.apply(this, response); // TODID callback function
                 }
             }
         }
-        // state.completionSource.SetResult(null); // TODO determine
+        state.getJobCompletionHandle().set(); // TODID determine completion state
     }
 }

@@ -10,9 +10,9 @@ public class ParClientCmdHandler {
 
     // grpc variables
     private static final Logger logger = Logger.getLogger(GClient.class.getName());
-    private static ParSpiceGrpc.ParSpiceBlockingStub blockingStub;
+    private ParSpiceGrpc.ParSpiceBlockingStub blockingStub;
 
-    private ParClientCmdHandler(){
+    public ParClientCmdHandler(){
         // init type
         // 0 = grpc
         int type = 0;
@@ -37,7 +37,7 @@ public class ParClientCmdHandler {
         blockingStub = ParSpiceGrpc.newBlockingStub(channel);
     }
 
-    public static ParResponse ParProcess(ParCommand cmd){
+    public ParResponse ParProcess(ParCommand cmd){
         ParResponse response;
 
         switch (cmd.getFuncInfo()){
@@ -74,7 +74,7 @@ class GrpcFurnshHandler{
         }
         catch (StatusRuntimeException e) {
            System.out.println(e.getStatus());
-            // logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
+           //logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
         }
 
         // compose results

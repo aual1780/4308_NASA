@@ -25,6 +25,6 @@ public class FurnshParCommand extends ParCommand {
     }
 
     public ParResponse distribute(){
-        return ParClientCmdHandler.ParProcess(this);
+        return new ParClientCmdHandler().ParProcess(this);
     }
 }

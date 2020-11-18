@@ -33,8 +33,10 @@ parspiceTest/Str2EtBundle.java
  parspiceTest.Str2EtBundle$Builder
 parspiceTest/Str2EtReqOrBuilder.java
  parspiceTest.Str2EtReqOrBuilder
-parspiceTest/GClient.java
- parspiceTest.GClient
+parspiceTest/FurnshRep.java
+ parspiceTest.FurnshRep
+ parspiceTest.FurnshRep$1
+ parspiceTest.FurnshRep$Builder
 parspiceTest/FurnshReq.java
  parspiceTest.FurnshReq
  parspiceTest.FurnshReq$1
@@ -85,10 +87,6 @@ parspiceTest/FurnshBundle.java
  parspiceTest.FurnshBundle
  parspiceTest.FurnshBundle$1
  parspiceTest.FurnshBundle$Builder
-parspiceTest/FurnshRep.java
- parspiceTest.FurnshRep
- parspiceTest.FurnshRep$1
- parspiceTest.FurnshRep$Builder
 parspiceTest/FurnshParCommand.java
  parspiceTest.FurnshParCommand
 parspiceTest/ParClientCmdHandler.java
@@ -96,3 +94,5 @@ parspiceTest/ParClientCmdHandler.java
  parspiceTest.GrpcSpkposHandler
  parspiceTest.GrpcStr2EtHandler
  parspiceTest.ParClientCmdHandler
+parspiceTest/GClient.java
+ parspiceTest.GClient

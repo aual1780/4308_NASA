@@ -4,10 +4,6 @@
 package parspiceTest;
 
 /**
- * <pre>
- * The request message name of kernel file to load
- * </pre>
- *
  * Protobuf type {@code parspiceTest.FurnshReq}
  */
 public final class FurnshReq extends
@@ -284,10 +280,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * The request message name of kernel file to load
-   * </pre>
-   *
    * Protobuf type {@code parspiceTest.FurnshReq}
    */
   public static final class Builder extends

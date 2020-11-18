@@ -2,16 +2,17 @@ package parspiceTest;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.grpc.StatusRuntimeException;
 
 import java.util.logging.Logger;
 
-public class ParCmdHandler {
+public class ParClientCmdHandler {
 
     // grpc variables
     private static final Logger logger = Logger.getLogger(GClient.class.getName());
     private static ParSpiceGrpc.ParSpiceBlockingStub blockingStub;
 
-    private ParCmdHandler(){
+    private ParClientCmdHandler(){
         // init type
         // 0 = grpc
         int type = 0;
@@ -21,6 +22,7 @@ public class ParCmdHandler {
             case 0:
                 // establish grpc stub
                 ConnectGrpc();
+                System.out.println("c1");
                 break;
             // open to other messaging services
             default:
@@ -67,7 +69,13 @@ class GrpcFurnshHandler{
         System.out.println(bundle.getRequests(0).getFile());
 
         // send off with stub
-        stub.parFurnsh(bundle);
+        try{
+            stub.parFurnsh(bundle);
+        }
+        catch (StatusRuntimeException e) {
+           System.out.println(e.getStatus());
+            // logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
+        }
 
         // compose results
         ParResponse results = new ParResponse();

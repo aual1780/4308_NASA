@@ -4,10 +4,6 @@
 package parspiceTest;
 
 /**
- * <pre>
- * Null response
- * </pre>
- *
  * Protobuf type {@code parspiceTest.FurnshRep}
  */
 public final class FurnshRep extends
@@ -229,10 +225,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * Null response
-   * </pre>
-   *
    * Protobuf type {@code parspiceTest.FurnshRep}
    */
   public static final class Builder extends

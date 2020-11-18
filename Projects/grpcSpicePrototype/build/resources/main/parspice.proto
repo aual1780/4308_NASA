@@ -19,12 +19,10 @@ message FurnshBundle {
   repeated FurnshReq requests = 1;
 }
 
-// The request message name of kernel file to load
 message FurnshReq {
   string file = 1;
 }
 
-// Null response
 message FurnshRep { }
 
 /// Str2Et : : <basic info about furnsh>

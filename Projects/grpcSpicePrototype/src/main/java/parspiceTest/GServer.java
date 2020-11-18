@@ -16,7 +16,10 @@
 
 package parspiceTest;
 
+import com.google.protobuf.Empty;
 import io.grpc.Server;
+import io.grpc.ServerBuilder;
+import io.grpc.stub.StreamObserver;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -41,10 +44,10 @@ public class GServer {
 
         /* The port on which the server should run */
         int port = 50051;
-        /*server = ServerBuilder.forPort(port)
-                .addService(new Str2EtImpl())
+        server = ServerBuilder.forPort(port)
+                .addService(new ParSpiceImpl())
                 .build()
-                .start();*/
+                .start();
         logger.info("Server started, listening on " + port);
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override
@@ -80,34 +83,25 @@ public class GServer {
      * Main launches the server from the command line.
      */
     public static void main(String[] args) throws IOException, InterruptedException {
-        /*
-        LoadSpice();
-        try{
-            CSPICE.str2et("2004 jun 11 19:32:00");
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }*/
         final GServer server = new GServer();
         server.start();
         server.blockUntilShutdown();
     }
-/*
-    static class Str2EtImpl extends Str2EtGrpc.Str2EtImplBase {
+
+    static class ParSpiceImpl extends ParSpiceGrpc.ParSpiceImplBase {
 
         @Override
-        public void parStr2Et(Str2EtReq req, StreamObserver<Str2EtRep> responseObserver) {
+        public void parFurnsh(FurnshBundle bundle, StreamObserver<Empty> responseObserver) {
+            for (FurnshReq r : bundle.getRequestsList()){
+                // put into command
+                FurnshObject o = new FurnshObject(r.getFile());
 
-            double result;
-            try{
-                result = CSPICE.str2et(req.getTime());
+                // call acutal handler
+                boolean result = new ParEngineCmdHandler().FurnshHandler(o);
+
+                // record results
+                System.out.println(result);
             }
-            catch (SpiceErrorException e){
-                result = -1.0;
-            }
-            Str2EtRep reply = Str2EtRep.newBuilder().setTime(result).build();
-            responseObserver.onNext(reply);
-            responseObserver.onCompleted();
         }
-    }*/
+    }
 }

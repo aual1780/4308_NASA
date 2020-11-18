@@ -74,7 +74,6 @@ class GrpcFurnshHandler{
         }
         catch (StatusRuntimeException e) {
            System.out.println(e.getStatus());
-           //logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
         }
 
         // compose results
@@ -85,6 +84,7 @@ class GrpcFurnshHandler{
 
 class GrpcStr2EtHandler{
     static ParResponse SendMessage(ParCommand cmd, ParSpiceGrpc.ParSpiceBlockingStub stub){
+        /* only use as refrence
         int i = 0;
 
         // put into proto stuct
@@ -94,13 +94,15 @@ class GrpcStr2EtHandler{
         }
 
         // send off with stub
+        */
         return null;
     }
 }
 
 class GrpcSpkposHandler{
-    static ParResponse SendMessage(ParCommand cmd, ParSpiceGrpc.ParSpiceBlockingStub stub){
-        // put into proto stuct
+    static ParResponse SendMessage(ParCommand cmd, ParSpiceGrpc.ParSpiceBlockingStub stub) {
+        /* only use as refrence
+        put into proto stuct
         for (Object s : cmd.getArg()) {
 
             String[] o = (String[])s;
@@ -108,6 +110,7 @@ class GrpcSpkposHandler{
         }
 
         // send off with stub
+        */
         return null;
     }
 }

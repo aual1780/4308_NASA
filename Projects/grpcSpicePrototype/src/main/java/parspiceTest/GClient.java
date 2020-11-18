@@ -8,7 +8,6 @@ public class GClient {
         //test parcommand
         FurnshParCommand furnshTest = new FurnshParCommand();
         furnshTest.addArg("convtm.tm");
-        furnshTest.addArg("kernel2");
         System.out.println("Info: " + furnshTest.getFuncInfo());
         ParResponse results = furnshTest.distribute();
     }

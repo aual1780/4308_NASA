@@ -4,10 +4,10 @@ parspiceTest/FurnshBundleOrBuilder.java
  parspiceTest.FurnshBundleOrBuilder
 parspiceTest/FurnshObject.java
  parspiceTest.FurnshObject
-parspiceTest/GServer.java
- parspiceTest.GServer
- parspiceTest.GServer$1
- parspiceTest.GServer$ParSpiceImpl
+parspiceTest/FurnshBundle.java
+ parspiceTest.FurnshBundle
+ parspiceTest.FurnshBundle$1
+ parspiceTest.FurnshBundle$Builder
 parspiceTest/Str2EtReq.java
  parspiceTest.Str2EtReq
  parspiceTest.Str2EtReq$1
@@ -43,8 +43,11 @@ parspiceTest/FurnshReq.java
  parspiceTest.FurnshReq$Builder
 parspiceTest/ParCommand.java
  parspiceTest.ParCommand
-parspiceTest/ParEngineCmdHandler.java
- parspiceTest.ParEngineCmdHandler
+parspiceTest/ParClientCmdHandler.java
+ parspiceTest.GrpcFurnshHandler
+ parspiceTest.GrpcSpkposHandler
+ parspiceTest.GrpcStr2EtHandler
+ parspiceTest.ParClientCmdHandler
 parspiceTest/Str2EtRep.java
  parspiceTest.Str2EtRep
  parspiceTest.Str2EtRep$1
@@ -83,16 +86,13 @@ parspiceTest/FurnshGrpc.java
  parspiceTest.FurnshGrpc$FurnshMethodDescriptorSupplier
  parspiceTest.FurnshGrpc$FurnshStub
  parspiceTest.FurnshGrpc$MethodHandlers
-parspiceTest/FurnshBundle.java
- parspiceTest.FurnshBundle
- parspiceTest.FurnshBundle$1
- parspiceTest.FurnshBundle$Builder
 parspiceTest/FurnshParCommand.java
  parspiceTest.FurnshParCommand
-parspiceTest/ParClientCmdHandler.java
- parspiceTest.GrpcFurnshHandler
- parspiceTest.GrpcSpkposHandler
- parspiceTest.GrpcStr2EtHandler
- parspiceTest.ParClientCmdHandler
 parspiceTest/GClient.java
  parspiceTest.GClient
+parspiceTest/ParEngineCmdHandler.java
+ parspiceTest.ParEngineCmdHandler
+parspiceTest/GServer.java
+ parspiceTest.GServer
+ parspiceTest.GServer$1
+ parspiceTest.GServer$ParSpiceImpl

@@ -56,15 +56,15 @@ public final class Parspice {
       "\n\016parspice.proto\022\014parspiceTest\032\033google/p" +
       "rotobuf/empty.proto\"9\n\014FurnshBundle\022)\n\010r" +
       "equests\030\001 \003(\0132\027.parspiceTest.FurnshReq\"\031" +
-      "\n\tFurnshReq\022\014\n\004file\030\001 \001(\t\"\013\n\tFurnshRep\"9" +
-      "\n\014Str2EtBundle\022)\n\010requests\030\001 \003(\0132\027.parsp" +
-      "iceTest.Str2EtRep\"\031\n\tStr2EtReq\022\014\n\004time\030\001" +
-      " \001(\t\"\031\n\tStr2EtRep\022\014\n\004time\030\001 \003(\0012\221\001\n\010ParS" +
-      "pice\022A\n\tParFurnsh\022\032.parspiceTest.FurnshB" +
-      "undle\032\026.google.protobuf.Empty\"\000\022B\n\tParSt" +
-      "r2Et\022\032.parspiceTest.Str2EtBundle\032\027.parsp" +
-      "iceTest.Str2EtRep\"\000B\026\n\014parspiceTestP\001\242\002\003" +
-      "HLWb\006proto3"
+      "\n\tFurnshReq\022\014\n\004file\030\001 \001(\t\"\031\n\tFurnshRep\022\014" +
+      "\n\004file\030\001 \003(\001\"9\n\014Str2EtBundle\022)\n\010requests" +
+      "\030\001 \003(\0132\027.parspiceTest.Str2EtReq\"\031\n\tStr2E" +
+      "tReq\022\014\n\004time\030\001 \001(\t\"\031\n\tStr2EtRep\022\014\n\004time\030" +
+      "\001 \003(\0012\222\001\n\010ParSpice\022B\n\tParFurnsh\022\032.parspi" +
+      "ceTest.FurnshBundle\032\027.parspiceTest.Furns" +
+      "hRep\"\000\022B\n\tParStr2Et\022\032.parspiceTest.Str2E" +
+      "tBundle\032\027.parspiceTest.Str2EtRep\"\000B\026\n\014pa" +
+      "rspiceTestP\001\242\002\003HLWb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -88,7 +88,7 @@ public final class Parspice {
     internal_static_parspiceTest_FurnshRep_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_parspiceTest_FurnshRep_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "File", });
     internal_static_parspiceTest_Str2EtBundle_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_parspiceTest_Str2EtBundle_fieldAccessorTable = new

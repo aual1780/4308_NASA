@@ -22,7 +22,6 @@ public class ParClientCmdHandler {
             case 0:
                 // establish grpc stub
                 ConnectGrpc();
-                System.out.println("c1");
                 break;
             // open to other messaging services
             default:
@@ -66,36 +65,48 @@ class GrpcFurnshHandler{
                     .build());
         }
         FurnshBundle bundle = bundleBuilder.build();
-        System.out.println(bundle.getRequests(0).getFile());
 
         // send off with stub
+        ParResponse results = new ParResponse();
+
         try{
-            stub.parFurnsh(bundle);
+            FurnshRep response = stub.parFurnsh(bundle);
+            results = new ParResponse(response.getFileList());
         }
         catch (StatusRuntimeException e) {
            System.out.println(e.getStatus());
         }
 
         // compose results
-        ParResponse results = new ParResponse();
         return results;
     }
 }
 
 class GrpcStr2EtHandler{
     static ParResponse SendMessage(ParCommand cmd, ParSpiceGrpc.ParSpiceBlockingStub stub){
-        /* only use as refrence
-        int i = 0;
-
-        // put into proto stuct
-        for (Object s : cmd.getArg()) {
-            String o = String.valueOf(s);
-            System.out.println(o);
+        // put request into proto stuct
+        Str2EtBundle.Builder bundleBuilder = Str2EtBundle.newBuilder();
+        for (Object o : cmd.getArg()) {
+            Str2EtObject o1 = (Str2EtObject)(o);
+            bundleBuilder.addRequests(Str2EtReq.newBuilder()
+                    .setTime(o1.arg1)
+                    .build());
         }
+        Str2EtBundle bundle = bundleBuilder.build();
 
         // send off with stub
-        */
-        return null;
+        ParResponse results;
+        try{
+            Str2EtRep response = stub.parStr2Et(bundle);
+            results = new ParResponse(response.getTimeList());
+        }
+        catch (StatusRuntimeException e) {
+            System.out.println(e.getStatus());
+            results = null;
+        }
+
+        // compose results
+        return results;
     }
 }
 

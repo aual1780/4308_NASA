@@ -1,16 +1,17 @@
 package parspiceTest;
+
 import java.util.ArrayList;
 
-public class FurnshParCommand extends ParCommand {
+public class Str2EtParCommand extends ParCommand {
 
-    private ArrayList args = new ArrayList<FurnshObject>();
+    private ArrayList args = new ArrayList<Str2EtObject>();
 
-    public FurnshParCommand(){
-        name = "furnsh";
+    public Str2EtParCommand(){
+        name = "str2et";
     }
 
     public void addArg(String arg){
-        args.add(new FurnshObject(arg));
+        args.add(new Str2EtObject(arg));
         return;
     }
 

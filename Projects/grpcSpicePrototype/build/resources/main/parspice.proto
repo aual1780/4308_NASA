@@ -10,7 +10,7 @@ package parspiceTest;
 
 service ParSpice {
   // Sends furnsh request
-  rpc ParFurnsh (FurnshBundle) returns (google.protobuf.Empty) {}
+  rpc ParFurnsh (FurnshBundle) returns (FurnshRep) {}
   rpc ParStr2Et (Str2EtBundle) returns (Str2EtRep) {}
 }
 
@@ -23,11 +23,13 @@ message FurnshReq {
   string file = 1;
 }
 
-message FurnshRep { }
+message FurnshRep {
+  repeated double file = 1;
+}
 
 /// Str2Et : : <basic info about furnsh>
 message Str2EtBundle {
-  repeated Str2EtRep requests = 1;
+  repeated Str2EtReq requests = 1;
 }
 
 message Str2EtReq {

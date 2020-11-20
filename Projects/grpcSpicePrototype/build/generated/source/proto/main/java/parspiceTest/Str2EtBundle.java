@@ -56,11 +56,11 @@ private static final long serialVersionUID = 0L;
             break;
           case 10: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              requests_ = new java.util.ArrayList<parspiceTest.Str2EtRep>();
+              requests_ = new java.util.ArrayList<parspiceTest.Str2EtReq>();
               mutable_bitField0_ |= 0x00000001;
             }
             requests_.add(
-                input.readMessage(parspiceTest.Str2EtRep.parser(), extensionRegistry));
+                input.readMessage(parspiceTest.Str2EtReq.parser(), extensionRegistry));
             break;
           }
           default: {
@@ -99,41 +99,41 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int REQUESTS_FIELD_NUMBER = 1;
-  private java.util.List<parspiceTest.Str2EtRep> requests_;
+  private java.util.List<parspiceTest.Str2EtReq> requests_;
   /**
-   * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+   * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
    */
   @java.lang.Override
-  public java.util.List<parspiceTest.Str2EtRep> getRequestsList() {
+  public java.util.List<parspiceTest.Str2EtReq> getRequestsList() {
     return requests_;
   }
   /**
-   * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+   * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
    */
   @java.lang.Override
-  public java.util.List<? extends parspiceTest.Str2EtRepOrBuilder> 
+  public java.util.List<? extends parspiceTest.Str2EtReqOrBuilder> 
       getRequestsOrBuilderList() {
     return requests_;
   }
   /**
-   * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+   * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
    */
   @java.lang.Override
   public int getRequestsCount() {
     return requests_.size();
   }
   /**
-   * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+   * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
    */
   @java.lang.Override
-  public parspiceTest.Str2EtRep getRequests(int index) {
+  public parspiceTest.Str2EtReq getRequests(int index) {
     return requests_.get(index);
   }
   /**
-   * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+   * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
    */
   @java.lang.Override
-  public parspiceTest.Str2EtRepOrBuilder getRequestsOrBuilder(
+  public parspiceTest.Str2EtReqOrBuilder getRequestsOrBuilder(
       int index) {
     return requests_.get(index);
   }
@@ -484,22 +484,22 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private java.util.List<parspiceTest.Str2EtRep> requests_ =
+    private java.util.List<parspiceTest.Str2EtReq> requests_ =
       java.util.Collections.emptyList();
     private void ensureRequestsIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
-        requests_ = new java.util.ArrayList<parspiceTest.Str2EtRep>(requests_);
+        requests_ = new java.util.ArrayList<parspiceTest.Str2EtReq>(requests_);
         bitField0_ |= 0x00000001;
        }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        parspiceTest.Str2EtRep, parspiceTest.Str2EtRep.Builder, parspiceTest.Str2EtRepOrBuilder> requestsBuilder_;
+        parspiceTest.Str2EtReq, parspiceTest.Str2EtReq.Builder, parspiceTest.Str2EtReqOrBuilder> requestsBuilder_;
 
     /**
-     * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
      */
-    public java.util.List<parspiceTest.Str2EtRep> getRequestsList() {
+    public java.util.List<parspiceTest.Str2EtReq> getRequestsList() {
       if (requestsBuilder_ == null) {
         return java.util.Collections.unmodifiableList(requests_);
       } else {
@@ -507,7 +507,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
      */
     public int getRequestsCount() {
       if (requestsBuilder_ == null) {
@@ -517,9 +517,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
      */
-    public parspiceTest.Str2EtRep getRequests(int index) {
+    public parspiceTest.Str2EtReq getRequests(int index) {
       if (requestsBuilder_ == null) {
         return requests_.get(index);
       } else {
@@ -527,10 +527,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
      */
     public Builder setRequests(
-        int index, parspiceTest.Str2EtRep value) {
+        int index, parspiceTest.Str2EtReq value) {
       if (requestsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -544,10 +544,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
      */
     public Builder setRequests(
-        int index, parspiceTest.Str2EtRep.Builder builderForValue) {
+        int index, parspiceTest.Str2EtReq.Builder builderForValue) {
       if (requestsBuilder_ == null) {
         ensureRequestsIsMutable();
         requests_.set(index, builderForValue.build());
@@ -558,9 +558,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
      */
-    public Builder addRequests(parspiceTest.Str2EtRep value) {
+    public Builder addRequests(parspiceTest.Str2EtReq value) {
       if (requestsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -574,10 +574,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
      */
     public Builder addRequests(
-        int index, parspiceTest.Str2EtRep value) {
+        int index, parspiceTest.Str2EtReq value) {
       if (requestsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -591,10 +591,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
      */
     public Builder addRequests(
-        parspiceTest.Str2EtRep.Builder builderForValue) {
+        parspiceTest.Str2EtReq.Builder builderForValue) {
       if (requestsBuilder_ == null) {
         ensureRequestsIsMutable();
         requests_.add(builderForValue.build());
@@ -605,10 +605,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
      */
     public Builder addRequests(
-        int index, parspiceTest.Str2EtRep.Builder builderForValue) {
+        int index, parspiceTest.Str2EtReq.Builder builderForValue) {
       if (requestsBuilder_ == null) {
         ensureRequestsIsMutable();
         requests_.add(index, builderForValue.build());
@@ -619,10 +619,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
      */
     public Builder addAllRequests(
-        java.lang.Iterable<? extends parspiceTest.Str2EtRep> values) {
+        java.lang.Iterable<? extends parspiceTest.Str2EtReq> values) {
       if (requestsBuilder_ == null) {
         ensureRequestsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -634,7 +634,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
      */
     public Builder clearRequests() {
       if (requestsBuilder_ == null) {
@@ -647,7 +647,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
      */
     public Builder removeRequests(int index) {
       if (requestsBuilder_ == null) {
@@ -660,16 +660,16 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
      */
-    public parspiceTest.Str2EtRep.Builder getRequestsBuilder(
+    public parspiceTest.Str2EtReq.Builder getRequestsBuilder(
         int index) {
       return getRequestsFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
      */
-    public parspiceTest.Str2EtRepOrBuilder getRequestsOrBuilder(
+    public parspiceTest.Str2EtReqOrBuilder getRequestsOrBuilder(
         int index) {
       if (requestsBuilder_ == null) {
         return requests_.get(index);  } else {
@@ -677,9 +677,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
      */
-    public java.util.List<? extends parspiceTest.Str2EtRepOrBuilder> 
+    public java.util.List<? extends parspiceTest.Str2EtReqOrBuilder> 
          getRequestsOrBuilderList() {
       if (requestsBuilder_ != null) {
         return requestsBuilder_.getMessageOrBuilderList();
@@ -688,33 +688,33 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
      */
-    public parspiceTest.Str2EtRep.Builder addRequestsBuilder() {
+    public parspiceTest.Str2EtReq.Builder addRequestsBuilder() {
       return getRequestsFieldBuilder().addBuilder(
-          parspiceTest.Str2EtRep.getDefaultInstance());
+          parspiceTest.Str2EtReq.getDefaultInstance());
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
      */
-    public parspiceTest.Str2EtRep.Builder addRequestsBuilder(
+    public parspiceTest.Str2EtReq.Builder addRequestsBuilder(
         int index) {
       return getRequestsFieldBuilder().addBuilder(
-          index, parspiceTest.Str2EtRep.getDefaultInstance());
+          index, parspiceTest.Str2EtReq.getDefaultInstance());
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
      */
-    public java.util.List<parspiceTest.Str2EtRep.Builder> 
+    public java.util.List<parspiceTest.Str2EtReq.Builder> 
          getRequestsBuilderList() {
       return getRequestsFieldBuilder().getBuilderList();
     }
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        parspiceTest.Str2EtRep, parspiceTest.Str2EtRep.Builder, parspiceTest.Str2EtRepOrBuilder> 
+        parspiceTest.Str2EtReq, parspiceTest.Str2EtReq.Builder, parspiceTest.Str2EtReqOrBuilder> 
         getRequestsFieldBuilder() {
       if (requestsBuilder_ == null) {
         requestsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            parspiceTest.Str2EtRep, parspiceTest.Str2EtRep.Builder, parspiceTest.Str2EtRepOrBuilder>(
+            parspiceTest.Str2EtReq, parspiceTest.Str2EtReq.Builder, parspiceTest.Str2EtReqOrBuilder>(
                 requests_,
                 ((bitField0_ & 0x00000001) != 0),
                 getParentForChildren(),

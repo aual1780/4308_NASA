@@ -28,28 +28,28 @@ public final class ParSpiceGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<parspiceTest.FurnshBundle,
-      com.google.protobuf.Empty> getParFurnshMethod;
+      parspiceTest.FurnshRep> getParFurnshMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "ParFurnsh",
       requestType = parspiceTest.FurnshBundle.class,
-      responseType = com.google.protobuf.Empty.class,
+      responseType = parspiceTest.FurnshRep.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<parspiceTest.FurnshBundle,
-      com.google.protobuf.Empty> getParFurnshMethod() {
-    io.grpc.MethodDescriptor<parspiceTest.FurnshBundle, com.google.protobuf.Empty> getParFurnshMethod;
+      parspiceTest.FurnshRep> getParFurnshMethod() {
+    io.grpc.MethodDescriptor<parspiceTest.FurnshBundle, parspiceTest.FurnshRep> getParFurnshMethod;
     if ((getParFurnshMethod = ParSpiceGrpc.getParFurnshMethod) == null) {
       synchronized (ParSpiceGrpc.class) {
         if ((getParFurnshMethod = ParSpiceGrpc.getParFurnshMethod) == null) {
           ParSpiceGrpc.getParFurnshMethod = getParFurnshMethod =
-              io.grpc.MethodDescriptor.<parspiceTest.FurnshBundle, com.google.protobuf.Empty>newBuilder()
+              io.grpc.MethodDescriptor.<parspiceTest.FurnshBundle, parspiceTest.FurnshRep>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ParFurnsh"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   parspiceTest.FurnshBundle.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.google.protobuf.Empty.getDefaultInstance()))
+                  parspiceTest.FurnshRep.getDefaultInstance()))
               .setSchemaDescriptor(new ParSpiceMethodDescriptorSupplier("ParFurnsh"))
               .build();
         }
@@ -143,7 +143,7 @@ public final class ParSpiceGrpc {
      * </pre>
      */
     public void parFurnsh(parspiceTest.FurnshBundle request,
-        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
+        io.grpc.stub.StreamObserver<parspiceTest.FurnshRep> responseObserver) {
       asyncUnimplementedUnaryCall(getParFurnshMethod(), responseObserver);
     }
 
@@ -161,7 +161,7 @@ public final class ParSpiceGrpc {
             asyncUnaryCall(
               new MethodHandlers<
                 parspiceTest.FurnshBundle,
-                com.google.protobuf.Empty>(
+                parspiceTest.FurnshRep>(
                   this, METHODID_PAR_FURNSH)))
           .addMethod(
             getParStr2EtMethod(),
@@ -194,7 +194,7 @@ public final class ParSpiceGrpc {
      * </pre>
      */
     public void parFurnsh(parspiceTest.FurnshBundle request,
-        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
+        io.grpc.stub.StreamObserver<parspiceTest.FurnshRep> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getParFurnshMethod(), getCallOptions()), request, responseObserver);
     }
@@ -227,7 +227,7 @@ public final class ParSpiceGrpc {
      * Sends furnsh request
      * </pre>
      */
-    public com.google.protobuf.Empty parFurnsh(parspiceTest.FurnshBundle request) {
+    public parspiceTest.FurnshRep parFurnsh(parspiceTest.FurnshBundle request) {
       return blockingUnaryCall(
           getChannel(), getParFurnshMethod(), getCallOptions(), request);
     }
@@ -259,7 +259,7 @@ public final class ParSpiceGrpc {
      * Sends furnsh request
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.Empty> parFurnsh(
+    public com.google.common.util.concurrent.ListenableFuture<parspiceTest.FurnshRep> parFurnsh(
         parspiceTest.FurnshBundle request) {
       return futureUnaryCall(
           getChannel().newCall(getParFurnshMethod(), getCallOptions()), request);
@@ -296,7 +296,7 @@ public final class ParSpiceGrpc {
       switch (methodId) {
         case METHODID_PAR_FURNSH:
           serviceImpl.parFurnsh((parspiceTest.FurnshBundle) request,
-              (io.grpc.stub.StreamObserver<com.google.protobuf.Empty>) responseObserver);
+              (io.grpc.stub.StreamObserver<parspiceTest.FurnshRep>) responseObserver);
           break;
         case METHODID_PAR_STR2ET:
           serviceImpl.parStr2Et((parspiceTest.Str2EtBundle) request,

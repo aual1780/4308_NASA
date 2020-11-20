@@ -6,4 +6,21 @@ package parspiceTest;
 public interface FurnshRepOrBuilder extends
     // @@protoc_insertion_point(interface_extends:parspiceTest.FurnshRep)
     com.google.protobuf.MessageOrBuilder {
+
+  /**
+   * <code>repeated double file = 1;</code>
+   * @return A list containing the file.
+   */
+  java.util.List<java.lang.Double> getFileList();
+  /**
+   * <code>repeated double file = 1;</code>
+   * @return The count of file.
+   */
+  int getFileCount();
+  /**
+   * <code>repeated double file = 1;</code>
+   * @param index The index of the element to return.
+   * @return The file at the given index.
+   */
+  double getFile(int index);
 }

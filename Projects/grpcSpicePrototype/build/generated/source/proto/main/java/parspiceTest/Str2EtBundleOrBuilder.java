@@ -8,26 +8,26 @@ public interface Str2EtBundleOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+   * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
    */
-  java.util.List<parspiceTest.Str2EtRep> 
+  java.util.List<parspiceTest.Str2EtReq> 
       getRequestsList();
   /**
-   * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+   * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
    */
-  parspiceTest.Str2EtRep getRequests(int index);
+  parspiceTest.Str2EtReq getRequests(int index);
   /**
-   * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+   * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
    */
   int getRequestsCount();
   /**
-   * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+   * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
    */
-  java.util.List<? extends parspiceTest.Str2EtRepOrBuilder> 
+  java.util.List<? extends parspiceTest.Str2EtReqOrBuilder> 
       getRequestsOrBuilderList();
   /**
-   * <code>repeated .parspiceTest.Str2EtRep requests = 1;</code>
+   * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
    */
-  parspiceTest.Str2EtRepOrBuilder getRequestsOrBuilder(
+  parspiceTest.Str2EtReqOrBuilder getRequestsOrBuilder(
       int index);
 }

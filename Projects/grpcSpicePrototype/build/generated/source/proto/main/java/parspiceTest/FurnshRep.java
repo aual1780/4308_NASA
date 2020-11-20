@@ -16,6 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private FurnshRep() {
+    file_ = emptyDoubleList();
   }
 
   @java.lang.Override
@@ -38,6 +39,7 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
+    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -48,6 +50,27 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
+          case 9: {
+            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+              file_ = newDoubleList();
+              mutable_bitField0_ |= 0x00000001;
+            }
+            file_.addDouble(input.readDouble());
+            break;
+          }
+          case 10: {
+            int length = input.readRawVarint32();
+            int limit = input.pushLimit(length);
+            if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
+              file_ = newDoubleList();
+              mutable_bitField0_ |= 0x00000001;
+            }
+            while (input.getBytesUntilLimit() > 0) {
+              file_.addDouble(input.readDouble());
+            }
+            input.popLimit(limit);
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -63,6 +86,9 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
+      if (((mutable_bitField0_ & 0x00000001) != 0)) {
+        file_.makeImmutable(); // C
+      }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
@@ -80,6 +106,34 @@ private static final long serialVersionUID = 0L;
             parspiceTest.FurnshRep.class, parspiceTest.FurnshRep.Builder.class);
   }
 
+  public static final int FILE_FIELD_NUMBER = 1;
+  private com.google.protobuf.Internal.DoubleList file_;
+  /**
+   * <code>repeated double file = 1;</code>
+   * @return A list containing the file.
+   */
+  @java.lang.Override
+  public java.util.List<java.lang.Double>
+      getFileList() {
+    return file_;
+  }
+  /**
+   * <code>repeated double file = 1;</code>
+   * @return The count of file.
+   */
+  public int getFileCount() {
+    return file_.size();
+  }
+  /**
+   * <code>repeated double file = 1;</code>
+   * @param index The index of the element to return.
+   * @return The file at the given index.
+   */
+  public double getFile(int index) {
+    return file_.getDouble(index);
+  }
+  private int fileMemoizedSerializedSize = -1;
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -94,6 +148,14 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    getSerializedSize();
+    if (getFileList().size() > 0) {
+      output.writeUInt32NoTag(10);
+      output.writeUInt32NoTag(fileMemoizedSerializedSize);
+    }
+    for (int i = 0; i < file_.size(); i++) {
+      output.writeDoubleNoTag(file_.getDouble(i));
+    }
     unknownFields.writeTo(output);
   }
 
@@ -103,6 +165,17 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    {
+      int dataSize = 0;
+      dataSize = 8 * getFileList().size();
+      size += dataSize;
+      if (!getFileList().isEmpty()) {
+        size += 1;
+        size += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(dataSize);
+      }
+      fileMemoizedSerializedSize = dataSize;
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -118,6 +191,8 @@ private static final long serialVersionUID = 0L;
     }
     parspiceTest.FurnshRep other = (parspiceTest.FurnshRep) obj;
 
+    if (!getFileList()
+        .equals(other.getFileList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -129,6 +204,10 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    if (getFileCount() > 0) {
+      hash = (37 * hash) + FILE_FIELD_NUMBER;
+      hash = (53 * hash) + getFileList().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -262,6 +341,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      file_ = emptyDoubleList();
+      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
 
@@ -288,6 +369,12 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public parspiceTest.FurnshRep buildPartial() {
       parspiceTest.FurnshRep result = new parspiceTest.FurnshRep(this);
+      int from_bitField0_ = bitField0_;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        file_.makeImmutable();
+        bitField0_ = (bitField0_ & ~0x00000001);
+      }
+      result.file_ = file_;
       onBuilt();
       return result;
     }
@@ -336,6 +423,16 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(parspiceTest.FurnshRep other) {
       if (other == parspiceTest.FurnshRep.getDefaultInstance()) return this;
+      if (!other.file_.isEmpty()) {
+        if (file_.isEmpty()) {
+          file_ = other.file_;
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          ensureFileIsMutable();
+          file_.addAll(other.file_);
+        }
+        onChanged();
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -362,6 +459,86 @@ private static final long serialVersionUID = 0L;
           mergeFrom(parsedMessage);
         }
       }
+      return this;
+    }
+    private int bitField0_;
+
+    private com.google.protobuf.Internal.DoubleList file_ = emptyDoubleList();
+    private void ensureFileIsMutable() {
+      if (!((bitField0_ & 0x00000001) != 0)) {
+        file_ = mutableCopy(file_);
+        bitField0_ |= 0x00000001;
+       }
+    }
+    /**
+     * <code>repeated double file = 1;</code>
+     * @return A list containing the file.
+     */
+    public java.util.List<java.lang.Double>
+        getFileList() {
+      return ((bitField0_ & 0x00000001) != 0) ?
+               java.util.Collections.unmodifiableList(file_) : file_;
+    }
+    /**
+     * <code>repeated double file = 1;</code>
+     * @return The count of file.
+     */
+    public int getFileCount() {
+      return file_.size();
+    }
+    /**
+     * <code>repeated double file = 1;</code>
+     * @param index The index of the element to return.
+     * @return The file at the given index.
+     */
+    public double getFile(int index) {
+      return file_.getDouble(index);
+    }
+    /**
+     * <code>repeated double file = 1;</code>
+     * @param index The index to set the value at.
+     * @param value The file to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFile(
+        int index, double value) {
+      ensureFileIsMutable();
+      file_.setDouble(index, value);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated double file = 1;</code>
+     * @param value The file to add.
+     * @return This builder for chaining.
+     */
+    public Builder addFile(double value) {
+      ensureFileIsMutable();
+      file_.addDouble(value);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated double file = 1;</code>
+     * @param values The file to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAllFile(
+        java.lang.Iterable<? extends java.lang.Double> values) {
+      ensureFileIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, file_);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated double file = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearFile() {
+      file_ = emptyDoubleList();
+      bitField0_ = (bitField0_ & ~0x00000001);
+      onChanged();
       return this;
     }
     @java.lang.Override

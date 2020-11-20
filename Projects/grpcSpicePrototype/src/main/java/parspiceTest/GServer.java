@@ -16,7 +16,6 @@
 
 package parspiceTest;
 
-import com.google.protobuf.Empty;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
@@ -91,17 +90,54 @@ public class GServer {
     static class ParSpiceImpl extends ParSpiceGrpc.ParSpiceImplBase {
 
         @Override
-        public void parFurnsh(FurnshBundle bundle, StreamObserver<Empty> responseObserver) {
+        public void parFurnsh(FurnshBundle bundle, StreamObserver<FurnshRep> responseObserver) {
+
+            FurnshRep.Builder bundleBuilder = FurnshRep.newBuilder();
+
             for (FurnshReq r : bundle.getRequestsList()){
                 // put into command
                 FurnshObject o = new FurnshObject(r.getFile());
 
                 // call acutal handler
-                boolean result = new ParEngineCmdHandler().FurnshHandler(o);
+                double result = new ParEngineCmdHandler().FurnshHandler(o);
+
+                //Debug
+                System.out.println("furnsh result: " + result);
 
                 // record results
-                System.out.println(result);
+                bundleBuilder.addFile(result);
+
             }
+            // send results
+            FurnshRep reply = bundleBuilder.build();
+            responseObserver.onNext(reply);
+            responseObserver.onCompleted();
+        }
+
+        @Override
+        public void parStr2Et(Str2EtBundle bundle, StreamObserver<Str2EtRep> responseObserver) {
+
+            Str2EtRep.Builder bundleBuilder = Str2EtRep.newBuilder();
+
+            // process each message
+            for (Str2EtReq r : bundle.getRequestsList()){
+                // put into command
+                Str2EtObject o = new Str2EtObject(r.getTime());
+
+                // call acutal handler
+                double result = new ParEngineCmdHandler().Str2EtHandler(o);
+
+                // Debug testing
+                System.out.println("str2et result: " + result);
+
+                //record results
+                bundleBuilder.addTime(result);
+            }
+
+            // send results
+            Str2EtRep reply = bundleBuilder.build();
+            responseObserver.onNext(reply);
+            responseObserver.onCompleted();
         }
     }
 }

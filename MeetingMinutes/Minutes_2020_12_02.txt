@@ -1,0 +1,16 @@
+Meeting Attendance
+- Willie absent excused - flying home
+- Everyone else present
+
+Meeting with Marcel
+Final meeting of the semester
+
+We presented what we have.  Unfortunately, we missed the inital goal of a working prototype, but we did make significant progress
+We have several working parts, just not a fully integrated platform
+Marshalling works with a small subset of SPICE calls
+Task distribution works in java, we just need to put the pieces together
+
+Marcel seems happy with progress.
+
+The team will not have offical meetings over the break, but we might do some individual work on the project to get the prototype working.
+Hopefully we will have an integrated system at the start of next semester

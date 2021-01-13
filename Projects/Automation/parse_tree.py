@@ -62,4 +62,6 @@ class DataType:
             result = "GFSearchUtils"
         elif self.base_type == DataType.GFSCALARQUANTITY:
             result = "GFScalarQuantity"
+        else:
+            raise ValueError("Base type not recognized: " + str(self.base_type))
         return result + "[]"*self.array_depth

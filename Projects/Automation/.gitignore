@@ -1,0 +1,6 @@
+# ANTLR 4
+*.tokens
+*.interp
+
+# Python
+__pycache__

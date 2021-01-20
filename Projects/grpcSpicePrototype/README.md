@@ -21,18 +21,18 @@ ParResponse is a structure that manages the results of the FunctionParCommands. 
 
 #### Used on the server side
 ParEngineCmdHandler holds refrences to the JNISpice library calls. It is used by the worker to make spice calls.  
-  
-### GClient.java wip
-ParCommand objects are initialized. They will represent a parspice call.
-addArg function will add parameters. used to add spice calls to par spice
-distribute will send data via ParClientCmdHandler
-ParClientCmdHandler handles rpc logic
 
-### GServer.java wip
-Opens the grpc endpoints 
-Has grpc endpoints for each Spice call
-Endpoints use a ParEngineCmdHandler
-ParEngineCmdHandler calls JNISpice library
+### GClient.java
+#### Client interaction
+FunctionParCommand objects are initialized. These objects will represent a parspice call.  
+The addArg() function will be used to queue up spice calls intended to be called concurrently. Each addArg function should have parameters that correspond with their respective spice functions.  
+The distribute() function will then send the data to the ParSpice engine to be processed via the ParClientCmdHandler object.  
+
+
+### GServer.java 
+The code opens up relevant GRPC endpoints to service the client.  
+The respective endpoints use a ParEngineCmdHandler object to handle the requests.  
+A ParResponse object is filled with the results. The server will then turn the object into a proto struct to be sent back to the client. The client will recieve the proto struct and turn it back into a ParResponse object for it to parse through.  
 
 ### Notes
 Functions follow a camel case naming convention. (https://www.geeksforgeeks.org/java-naming-conventions/#:~:text=Java%20uses%20CamelCase%20as%20a,letter%2C%20rest%20all%20with%20capital.)

@@ -1,0 +1,11 @@
+Full Attendance
+
+Weekly group meeting
+
+Topics:
+- Semester scheduling
+  - Team and Sponsor meeting unchanged
+  - TA meeting in limbo
+- Problems with various functions calls
+  - vhat may have complex arrays
+  - spkw02 write to file may be an issue

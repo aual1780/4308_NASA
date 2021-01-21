@@ -1,0 +1,10 @@
+Full Attendance
+
+Sponsor meeting
+
+Topics:
+- Semester scheduling
+  - Sponsor meeting may be moved
+- Update on overall progress of the project
+- Problems with various functions calls
+  - Write to file functions ideally handled locally by ParSpice

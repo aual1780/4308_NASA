@@ -5,7 +5,8 @@ package parspiceTest;
 
 /**
  * <pre>
- *&#47; Furnsh : &lt;basic info about furnsh&gt;
+ *&#47;/////////////////////////////////////
+ * / Furnsh : &lt;basic info about furnsh&gt;
  * </pre>
  *
  * Protobuf type {@code parspiceTest.FurnshBundle}
@@ -297,7 +298,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *&#47; Furnsh : &lt;basic info about furnsh&gt;
+   *&#47;/////////////////////////////////////
+   * / Furnsh : &lt;basic info about furnsh&gt;
    * </pre>
    *
    * Protobuf type {@code parspiceTest.FurnshBundle}

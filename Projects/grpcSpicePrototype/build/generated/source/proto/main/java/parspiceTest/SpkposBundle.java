@@ -6,21 +6,21 @@ package parspiceTest;
 /**
  * <pre>
  *&#47;/////////////////////////////////////
- * / Str2Et : : &lt;basic info about furnsh&gt;
+ * / Spkpos
  * </pre>
  *
- * Protobuf type {@code parspiceTest.Str2EtBundle}
+ * Protobuf type {@code parspiceTest.SpkposBundle}
  */
-public final class Str2EtBundle extends
+public final class SpkposBundle extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:parspiceTest.Str2EtBundle)
-    Str2EtBundleOrBuilder {
+    // @@protoc_insertion_point(message_implements:parspiceTest.SpkposBundle)
+    SpkposBundleOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use Str2EtBundle.newBuilder() to construct.
-  private Str2EtBundle(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use SpkposBundle.newBuilder() to construct.
+  private SpkposBundle(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private Str2EtBundle() {
+  private SpkposBundle() {
     requests_ = java.util.Collections.emptyList();
   }
 
@@ -28,7 +28,7 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new Str2EtBundle();
+    return new SpkposBundle();
   }
 
   @java.lang.Override
@@ -36,7 +36,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private Str2EtBundle(
+  private SpkposBundle(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -57,11 +57,11 @@ private static final long serialVersionUID = 0L;
             break;
           case 10: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              requests_ = new java.util.ArrayList<parspiceTest.Str2EtReq>();
+              requests_ = new java.util.ArrayList<parspiceTest.SpkposReq>();
               mutable_bitField0_ |= 0x00000001;
             }
             requests_.add(
-                input.readMessage(parspiceTest.Str2EtReq.parser(), extensionRegistry));
+                input.readMessage(parspiceTest.SpkposReq.parser(), extensionRegistry));
             break;
           }
           default: {
@@ -88,53 +88,53 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return parspiceTest.Parspice.internal_static_parspiceTest_Str2EtBundle_descriptor;
+    return parspiceTest.Parspice.internal_static_parspiceTest_SpkposBundle_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return parspiceTest.Parspice.internal_static_parspiceTest_Str2EtBundle_fieldAccessorTable
+    return parspiceTest.Parspice.internal_static_parspiceTest_SpkposBundle_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            parspiceTest.Str2EtBundle.class, parspiceTest.Str2EtBundle.Builder.class);
+            parspiceTest.SpkposBundle.class, parspiceTest.SpkposBundle.Builder.class);
   }
 
   public static final int REQUESTS_FIELD_NUMBER = 1;
-  private java.util.List<parspiceTest.Str2EtReq> requests_;
+  private java.util.List<parspiceTest.SpkposReq> requests_;
   /**
-   * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
+   * <code>repeated .parspiceTest.SpkposReq requests = 1;</code>
    */
   @java.lang.Override
-  public java.util.List<parspiceTest.Str2EtReq> getRequestsList() {
+  public java.util.List<parspiceTest.SpkposReq> getRequestsList() {
     return requests_;
   }
   /**
-   * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
+   * <code>repeated .parspiceTest.SpkposReq requests = 1;</code>
    */
   @java.lang.Override
-  public java.util.List<? extends parspiceTest.Str2EtReqOrBuilder> 
+  public java.util.List<? extends parspiceTest.SpkposReqOrBuilder> 
       getRequestsOrBuilderList() {
     return requests_;
   }
   /**
-   * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
+   * <code>repeated .parspiceTest.SpkposReq requests = 1;</code>
    */
   @java.lang.Override
   public int getRequestsCount() {
     return requests_.size();
   }
   /**
-   * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
+   * <code>repeated .parspiceTest.SpkposReq requests = 1;</code>
    */
   @java.lang.Override
-  public parspiceTest.Str2EtReq getRequests(int index) {
+  public parspiceTest.SpkposReq getRequests(int index) {
     return requests_.get(index);
   }
   /**
-   * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
+   * <code>repeated .parspiceTest.SpkposReq requests = 1;</code>
    */
   @java.lang.Override
-  public parspiceTest.Str2EtReqOrBuilder getRequestsOrBuilder(
+  public parspiceTest.SpkposReqOrBuilder getRequestsOrBuilder(
       int index) {
     return requests_.get(index);
   }
@@ -179,10 +179,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof parspiceTest.Str2EtBundle)) {
+    if (!(obj instanceof parspiceTest.SpkposBundle)) {
       return super.equals(obj);
     }
-    parspiceTest.Str2EtBundle other = (parspiceTest.Str2EtBundle) obj;
+    parspiceTest.SpkposBundle other = (parspiceTest.SpkposBundle) obj;
 
     if (!getRequestsList()
         .equals(other.getRequestsList())) return false;
@@ -206,69 +206,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static parspiceTest.Str2EtBundle parseFrom(
+  public static parspiceTest.SpkposBundle parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static parspiceTest.Str2EtBundle parseFrom(
+  public static parspiceTest.SpkposBundle parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static parspiceTest.Str2EtBundle parseFrom(
+  public static parspiceTest.SpkposBundle parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static parspiceTest.Str2EtBundle parseFrom(
+  public static parspiceTest.SpkposBundle parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static parspiceTest.Str2EtBundle parseFrom(byte[] data)
+  public static parspiceTest.SpkposBundle parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static parspiceTest.Str2EtBundle parseFrom(
+  public static parspiceTest.SpkposBundle parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static parspiceTest.Str2EtBundle parseFrom(java.io.InputStream input)
+  public static parspiceTest.SpkposBundle parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static parspiceTest.Str2EtBundle parseFrom(
+  public static parspiceTest.SpkposBundle parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static parspiceTest.Str2EtBundle parseDelimitedFrom(java.io.InputStream input)
+  public static parspiceTest.SpkposBundle parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static parspiceTest.Str2EtBundle parseDelimitedFrom(
+  public static parspiceTest.SpkposBundle parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static parspiceTest.Str2EtBundle parseFrom(
+  public static parspiceTest.SpkposBundle parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static parspiceTest.Str2EtBundle parseFrom(
+  public static parspiceTest.SpkposBundle parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -281,7 +281,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(parspiceTest.Str2EtBundle prototype) {
+  public static Builder newBuilder(parspiceTest.SpkposBundle prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -299,29 +299,29 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    *&#47;/////////////////////////////////////
-   * / Str2Et : : &lt;basic info about furnsh&gt;
+   * / Spkpos
    * </pre>
    *
-   * Protobuf type {@code parspiceTest.Str2EtBundle}
+   * Protobuf type {@code parspiceTest.SpkposBundle}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:parspiceTest.Str2EtBundle)
-      parspiceTest.Str2EtBundleOrBuilder {
+      // @@protoc_insertion_point(builder_implements:parspiceTest.SpkposBundle)
+      parspiceTest.SpkposBundleOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return parspiceTest.Parspice.internal_static_parspiceTest_Str2EtBundle_descriptor;
+      return parspiceTest.Parspice.internal_static_parspiceTest_SpkposBundle_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return parspiceTest.Parspice.internal_static_parspiceTest_Str2EtBundle_fieldAccessorTable
+      return parspiceTest.Parspice.internal_static_parspiceTest_SpkposBundle_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              parspiceTest.Str2EtBundle.class, parspiceTest.Str2EtBundle.Builder.class);
+              parspiceTest.SpkposBundle.class, parspiceTest.SpkposBundle.Builder.class);
     }
 
-    // Construct using parspiceTest.Str2EtBundle.newBuilder()
+    // Construct using parspiceTest.SpkposBundle.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -352,17 +352,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return parspiceTest.Parspice.internal_static_parspiceTest_Str2EtBundle_descriptor;
+      return parspiceTest.Parspice.internal_static_parspiceTest_SpkposBundle_descriptor;
     }
 
     @java.lang.Override
-    public parspiceTest.Str2EtBundle getDefaultInstanceForType() {
-      return parspiceTest.Str2EtBundle.getDefaultInstance();
+    public parspiceTest.SpkposBundle getDefaultInstanceForType() {
+      return parspiceTest.SpkposBundle.getDefaultInstance();
     }
 
     @java.lang.Override
-    public parspiceTest.Str2EtBundle build() {
-      parspiceTest.Str2EtBundle result = buildPartial();
+    public parspiceTest.SpkposBundle build() {
+      parspiceTest.SpkposBundle result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -370,8 +370,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public parspiceTest.Str2EtBundle buildPartial() {
-      parspiceTest.Str2EtBundle result = new parspiceTest.Str2EtBundle(this);
+    public parspiceTest.SpkposBundle buildPartial() {
+      parspiceTest.SpkposBundle result = new parspiceTest.SpkposBundle(this);
       int from_bitField0_ = bitField0_;
       if (requestsBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
@@ -420,16 +420,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof parspiceTest.Str2EtBundle) {
-        return mergeFrom((parspiceTest.Str2EtBundle)other);
+      if (other instanceof parspiceTest.SpkposBundle) {
+        return mergeFrom((parspiceTest.SpkposBundle)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(parspiceTest.Str2EtBundle other) {
-      if (other == parspiceTest.Str2EtBundle.getDefaultInstance()) return this;
+    public Builder mergeFrom(parspiceTest.SpkposBundle other) {
+      if (other == parspiceTest.SpkposBundle.getDefaultInstance()) return this;
       if (requestsBuilder_ == null) {
         if (!other.requests_.isEmpty()) {
           if (requests_.isEmpty()) {
@@ -471,11 +471,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      parspiceTest.Str2EtBundle parsedMessage = null;
+      parspiceTest.SpkposBundle parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (parspiceTest.Str2EtBundle) e.getUnfinishedMessage();
+        parsedMessage = (parspiceTest.SpkposBundle) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -486,22 +486,22 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private java.util.List<parspiceTest.Str2EtReq> requests_ =
+    private java.util.List<parspiceTest.SpkposReq> requests_ =
       java.util.Collections.emptyList();
     private void ensureRequestsIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
-        requests_ = new java.util.ArrayList<parspiceTest.Str2EtReq>(requests_);
+        requests_ = new java.util.ArrayList<parspiceTest.SpkposReq>(requests_);
         bitField0_ |= 0x00000001;
        }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        parspiceTest.Str2EtReq, parspiceTest.Str2EtReq.Builder, parspiceTest.Str2EtReqOrBuilder> requestsBuilder_;
+        parspiceTest.SpkposReq, parspiceTest.SpkposReq.Builder, parspiceTest.SpkposReqOrBuilder> requestsBuilder_;
 
     /**
-     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
+     * <code>repeated .parspiceTest.SpkposReq requests = 1;</code>
      */
-    public java.util.List<parspiceTest.Str2EtReq> getRequestsList() {
+    public java.util.List<parspiceTest.SpkposReq> getRequestsList() {
       if (requestsBuilder_ == null) {
         return java.util.Collections.unmodifiableList(requests_);
       } else {
@@ -509,7 +509,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
+     * <code>repeated .parspiceTest.SpkposReq requests = 1;</code>
      */
     public int getRequestsCount() {
       if (requestsBuilder_ == null) {
@@ -519,9 +519,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
+     * <code>repeated .parspiceTest.SpkposReq requests = 1;</code>
      */
-    public parspiceTest.Str2EtReq getRequests(int index) {
+    public parspiceTest.SpkposReq getRequests(int index) {
       if (requestsBuilder_ == null) {
         return requests_.get(index);
       } else {
@@ -529,10 +529,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
+     * <code>repeated .parspiceTest.SpkposReq requests = 1;</code>
      */
     public Builder setRequests(
-        int index, parspiceTest.Str2EtReq value) {
+        int index, parspiceTest.SpkposReq value) {
       if (requestsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -546,10 +546,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
+     * <code>repeated .parspiceTest.SpkposReq requests = 1;</code>
      */
     public Builder setRequests(
-        int index, parspiceTest.Str2EtReq.Builder builderForValue) {
+        int index, parspiceTest.SpkposReq.Builder builderForValue) {
       if (requestsBuilder_ == null) {
         ensureRequestsIsMutable();
         requests_.set(index, builderForValue.build());
@@ -560,9 +560,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
+     * <code>repeated .parspiceTest.SpkposReq requests = 1;</code>
      */
-    public Builder addRequests(parspiceTest.Str2EtReq value) {
+    public Builder addRequests(parspiceTest.SpkposReq value) {
       if (requestsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -576,10 +576,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
+     * <code>repeated .parspiceTest.SpkposReq requests = 1;</code>
      */
     public Builder addRequests(
-        int index, parspiceTest.Str2EtReq value) {
+        int index, parspiceTest.SpkposReq value) {
       if (requestsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -593,10 +593,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
+     * <code>repeated .parspiceTest.SpkposReq requests = 1;</code>
      */
     public Builder addRequests(
-        parspiceTest.Str2EtReq.Builder builderForValue) {
+        parspiceTest.SpkposReq.Builder builderForValue) {
       if (requestsBuilder_ == null) {
         ensureRequestsIsMutable();
         requests_.add(builderForValue.build());
@@ -607,10 +607,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
+     * <code>repeated .parspiceTest.SpkposReq requests = 1;</code>
      */
     public Builder addRequests(
-        int index, parspiceTest.Str2EtReq.Builder builderForValue) {
+        int index, parspiceTest.SpkposReq.Builder builderForValue) {
       if (requestsBuilder_ == null) {
         ensureRequestsIsMutable();
         requests_.add(index, builderForValue.build());
@@ -621,10 +621,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
+     * <code>repeated .parspiceTest.SpkposReq requests = 1;</code>
      */
     public Builder addAllRequests(
-        java.lang.Iterable<? extends parspiceTest.Str2EtReq> values) {
+        java.lang.Iterable<? extends parspiceTest.SpkposReq> values) {
       if (requestsBuilder_ == null) {
         ensureRequestsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -636,7 +636,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
+     * <code>repeated .parspiceTest.SpkposReq requests = 1;</code>
      */
     public Builder clearRequests() {
       if (requestsBuilder_ == null) {
@@ -649,7 +649,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
+     * <code>repeated .parspiceTest.SpkposReq requests = 1;</code>
      */
     public Builder removeRequests(int index) {
       if (requestsBuilder_ == null) {
@@ -662,16 +662,16 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
+     * <code>repeated .parspiceTest.SpkposReq requests = 1;</code>
      */
-    public parspiceTest.Str2EtReq.Builder getRequestsBuilder(
+    public parspiceTest.SpkposReq.Builder getRequestsBuilder(
         int index) {
       return getRequestsFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
+     * <code>repeated .parspiceTest.SpkposReq requests = 1;</code>
      */
-    public parspiceTest.Str2EtReqOrBuilder getRequestsOrBuilder(
+    public parspiceTest.SpkposReqOrBuilder getRequestsOrBuilder(
         int index) {
       if (requestsBuilder_ == null) {
         return requests_.get(index);  } else {
@@ -679,9 +679,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
+     * <code>repeated .parspiceTest.SpkposReq requests = 1;</code>
      */
-    public java.util.List<? extends parspiceTest.Str2EtReqOrBuilder> 
+    public java.util.List<? extends parspiceTest.SpkposReqOrBuilder> 
          getRequestsOrBuilderList() {
       if (requestsBuilder_ != null) {
         return requestsBuilder_.getMessageOrBuilderList();
@@ -690,33 +690,33 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
+     * <code>repeated .parspiceTest.SpkposReq requests = 1;</code>
      */
-    public parspiceTest.Str2EtReq.Builder addRequestsBuilder() {
+    public parspiceTest.SpkposReq.Builder addRequestsBuilder() {
       return getRequestsFieldBuilder().addBuilder(
-          parspiceTest.Str2EtReq.getDefaultInstance());
+          parspiceTest.SpkposReq.getDefaultInstance());
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
+     * <code>repeated .parspiceTest.SpkposReq requests = 1;</code>
      */
-    public parspiceTest.Str2EtReq.Builder addRequestsBuilder(
+    public parspiceTest.SpkposReq.Builder addRequestsBuilder(
         int index) {
       return getRequestsFieldBuilder().addBuilder(
-          index, parspiceTest.Str2EtReq.getDefaultInstance());
+          index, parspiceTest.SpkposReq.getDefaultInstance());
     }
     /**
-     * <code>repeated .parspiceTest.Str2EtReq requests = 1;</code>
+     * <code>repeated .parspiceTest.SpkposReq requests = 1;</code>
      */
-    public java.util.List<parspiceTest.Str2EtReq.Builder> 
+    public java.util.List<parspiceTest.SpkposReq.Builder> 
          getRequestsBuilderList() {
       return getRequestsFieldBuilder().getBuilderList();
     }
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        parspiceTest.Str2EtReq, parspiceTest.Str2EtReq.Builder, parspiceTest.Str2EtReqOrBuilder> 
+        parspiceTest.SpkposReq, parspiceTest.SpkposReq.Builder, parspiceTest.SpkposReqOrBuilder> 
         getRequestsFieldBuilder() {
       if (requestsBuilder_ == null) {
         requestsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            parspiceTest.Str2EtReq, parspiceTest.Str2EtReq.Builder, parspiceTest.Str2EtReqOrBuilder>(
+            parspiceTest.SpkposReq, parspiceTest.SpkposReq.Builder, parspiceTest.SpkposReqOrBuilder>(
                 requests_,
                 ((bitField0_ & 0x00000001) != 0),
                 getParentForChildren(),
@@ -738,41 +738,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:parspiceTest.Str2EtBundle)
+    // @@protoc_insertion_point(builder_scope:parspiceTest.SpkposBundle)
   }
 
-  // @@protoc_insertion_point(class_scope:parspiceTest.Str2EtBundle)
-  private static final parspiceTest.Str2EtBundle DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:parspiceTest.SpkposBundle)
+  private static final parspiceTest.SpkposBundle DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new parspiceTest.Str2EtBundle();
+    DEFAULT_INSTANCE = new parspiceTest.SpkposBundle();
   }
 
-  public static parspiceTest.Str2EtBundle getDefaultInstance() {
+  public static parspiceTest.SpkposBundle getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<Str2EtBundle>
-      PARSER = new com.google.protobuf.AbstractParser<Str2EtBundle>() {
+  private static final com.google.protobuf.Parser<SpkposBundle>
+      PARSER = new com.google.protobuf.AbstractParser<SpkposBundle>() {
     @java.lang.Override
-    public Str2EtBundle parsePartialFrom(
+    public SpkposBundle parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new Str2EtBundle(input, extensionRegistry);
+      return new SpkposBundle(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<Str2EtBundle> parser() {
+  public static com.google.protobuf.Parser<SpkposBundle> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<Str2EtBundle> getParserForType() {
+  public com.google.protobuf.Parser<SpkposBundle> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public parspiceTest.Str2EtBundle getDefaultInstanceForType() {
+  public parspiceTest.SpkposBundle getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

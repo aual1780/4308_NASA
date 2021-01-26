@@ -112,16 +112,35 @@ class GrpcStr2EtHandler{
 
 class GrpcSpkposHandler{
     static ParResponse SendMessage(ParCommand cmd, ParSpiceGrpc.ParSpiceBlockingStub stub) {
-        /* only use as refrence
-        put into proto stuct
-        for (Object s : cmd.getArg()) {
-
-            String[] o = (String[])s;
-            System.out.println(o);
+        // put request into proto stuct
+        SpkposBundle.Builder bundleBuilder = SpkposBundle.newBuilder();
+        for (Object o : cmd.getArg()) {
+            SpkposObject o1 = (SpkposObject)(o);
+            // all named after jnispice documentation
+            bundleBuilder.addRequests(SpkposReq.newBuilder()
+                    .setTarget(o1.arg1)
+                    .setEt(o1.arg2)
+                    .setRef(o1.arg3)
+                    .setAbcorr(o1.arg4)
+                    .setObserver(o1.arg5)
+                    .addAllPos(o1.arg6)
+                    .addAllLt(o1.arg7)
+                    .build());
         }
+        SpkposBundle bundle = bundleBuilder.build();
 
         // send off with stub
-        */
-        return null;
+        ParResponse results;
+        try{
+            SpkposRep response = stub.parSpkpos(bundle);
+            results = new ParResponse(response.getTimeList());
+        }
+        catch (StatusRuntimeException e) {
+            System.out.println(e.getStatus());
+            results = null;
+        }
+
+        // compose results
+        return results;
     }
 }

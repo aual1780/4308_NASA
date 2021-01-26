@@ -44,6 +44,21 @@ public final class Parspice {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_parspiceTest_Str2EtRep_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_parspiceTest_SpkposBundle_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_parspiceTest_SpkposBundle_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_parspiceTest_SpkposReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_parspiceTest_SpkposReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_parspiceTest_SpkposRep_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_parspiceTest_SpkposRep_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -60,11 +75,16 @@ public final class Parspice {
       "\n\004file\030\001 \003(\001\"9\n\014Str2EtBundle\022)\n\010requests" +
       "\030\001 \003(\0132\027.parspiceTest.Str2EtReq\"\031\n\tStr2E" +
       "tReq\022\014\n\004time\030\001 \001(\t\"\031\n\tStr2EtRep\022\014\n\004time\030" +
-      "\001 \003(\0012\222\001\n\010ParSpice\022B\n\tParFurnsh\022\032.parspi" +
-      "ceTest.FurnshBundle\032\027.parspiceTest.Furns" +
-      "hRep\"\000\022B\n\tParStr2Et\022\032.parspiceTest.Str2E" +
-      "tBundle\032\027.parspiceTest.Str2EtRep\"\000B\026\n\014pa" +
-      "rspiceTestP\001\242\002\003HLWb\006proto3"
+      "\001 \003(\001\"9\n\014SpkposBundle\022)\n\010requests\030\001 \003(\0132" +
+      "\027.parspiceTest.SpkposReq\"o\n\tSpkposReq\022\016\n" +
+      "\006target\030\001 \001(\t\022\n\n\002et\030\002 \001(\001\022\013\n\003ref\030\003 \001(\t\022\016" +
+      "\n\006abcorr\030\004 \001(\t\022\020\n\010observer\030\005 \001(\t\022\013\n\003pos\030" +
+      "\006 \003(\001\022\n\n\002lt\030\007 \003(\001\"\031\n\tSpkposRep\022\014\n\004time\030\001" +
+      " \003(\0012\222\001\n\010ParSpice\022B\n\tParFurnsh\022\032.parspic" +
+      "eTest.FurnshBundle\032\027.parspiceTest.Furnsh" +
+      "Rep\"\000\022B\n\tParStr2Et\022\032.parspiceTest.Str2Et" +
+      "Bundle\032\027.parspiceTest.Str2EtRep\"\000B\026\n\014par" +
+      "spiceTestP\001\242\002\003HLWb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -106,6 +126,24 @@ public final class Parspice {
     internal_static_parspiceTest_Str2EtRep_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_parspiceTest_Str2EtRep_descriptor,
+        new java.lang.String[] { "Time", });
+    internal_static_parspiceTest_SpkposBundle_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_parspiceTest_SpkposBundle_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_parspiceTest_SpkposBundle_descriptor,
+        new java.lang.String[] { "Requests", });
+    internal_static_parspiceTest_SpkposReq_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_parspiceTest_SpkposReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_parspiceTest_SpkposReq_descriptor,
+        new java.lang.String[] { "Target", "Et", "Ref", "Abcorr", "Observer", "Pos", "Lt", });
+    internal_static_parspiceTest_SpkposRep_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_parspiceTest_SpkposRep_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_parspiceTest_SpkposRep_descriptor,
         new java.lang.String[] { "Time", });
     com.google.protobuf.EmptyProto.getDescriptor();
   }

@@ -139,7 +139,7 @@ public final class ParSpiceGrpc {
 
     /**
      * <pre>
-     * Sends furnsh request
+     * RPC functions for each spice call
      * </pre>
      */
     public void parFurnsh(parspiceTest.FurnshBundle request,
@@ -190,7 +190,7 @@ public final class ParSpiceGrpc {
 
     /**
      * <pre>
-     * Sends furnsh request
+     * RPC functions for each spice call
      * </pre>
      */
     public void parFurnsh(parspiceTest.FurnshBundle request,
@@ -224,7 +224,7 @@ public final class ParSpiceGrpc {
 
     /**
      * <pre>
-     * Sends furnsh request
+     * RPC functions for each spice call
      * </pre>
      */
     public parspiceTest.FurnshRep parFurnsh(parspiceTest.FurnshBundle request) {
@@ -256,7 +256,7 @@ public final class ParSpiceGrpc {
 
     /**
      * <pre>
-     * Sends furnsh request
+     * RPC functions for each spice call
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<parspiceTest.FurnshRep> parFurnsh(

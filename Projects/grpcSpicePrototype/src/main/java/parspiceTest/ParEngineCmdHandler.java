@@ -2,13 +2,15 @@ package parspiceTest;
 
 import spice.basic.CSPICE;
 
+
+// The structure of the handling functions should all be very similar
 public class ParEngineCmdHandler {
     public double FurnshHandler(FurnshObject o){
         try{
-            CSPICE.furnsh(System.getProperty("user.dir") + "\\" + o.arg1);
+            CSPICE.furnsh(System.getProperty("user.dir") + "\\" + o.arg1); // client and engine/worker share the same directory
         }
         catch (Exception e){
-            System.out.println(e);
+            System.out.println(e); // temp solution for error handling
             return -0.0;
         }
 

@@ -35,13 +35,13 @@ public class GServer {
     private void LoadSpice(){
         // replace with absolute path; find a fix for the future
         // path to the jnispice .dll
-        System.load(System.getProperty("user.dir") + "/JNISpice.dll");
+        System.load(System.getProperty("user.dir") + "/JNISpice.dll"); //
     }
 
     private void start() throws IOException {
         LoadSpice();
 
-        /* The port on which the server should run */
+        // The port on which the server should run
         int port = 50051;
         server = ServerBuilder.forPort(port)
                 .addService(new ParSpiceImpl())
@@ -87,6 +87,10 @@ public class GServer {
         server.blockUntilShutdown();
     }
 
+    /**
+     * Handling the spice requests
+     * Each spice function has its own entry
+    */
     static class ParSpiceImpl extends ParSpiceGrpc.ParSpiceImplBase {
 
         @Override
@@ -108,7 +112,7 @@ public class GServer {
                 bundleBuilder.addFile(result);
 
             }
-            // send results
+            // send results back
             FurnshRep reply = bundleBuilder.build();
             responseObserver.onNext(reply);
             responseObserver.onCompleted();
@@ -134,7 +138,7 @@ public class GServer {
                 bundleBuilder.addTime(result);
             }
 
-            // send results
+            // send results back
             Str2EtRep reply = bundleBuilder.build();
             responseObserver.onNext(reply);
             responseObserver.onCompleted();

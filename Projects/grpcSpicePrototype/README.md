@@ -17,6 +17,8 @@ Examples: FurnshObject, Str2EtObject
 FunctionParCommands handles message marshalling of the spice calls meant to be ran concurrently. It uses FunctionObjects to store the parameters of each spice call. When distribute() is called, the FunctionObject data is converted into a GRPC proto struct and sent to the worker server. The FunctionParCommand will then wait for a ParResponse object to be returned.    
 Examples: FurnshParCommandObject, Str2EtParCommandObject  
   
+ParClientCmdHandler will convert FunctionObjects into GRPC structures and send it to the worker service.  
+  
 ParResponse is a structure that manages the results of the FunctionParCommands. It contains a get and add function for the ArrayList of Doubles that it encapsulates.  
 
 #### Used on the server side
@@ -39,10 +41,10 @@ A ParResponse object is filled with the results. The server will then turn the o
 The following things need to be accounted for when adding a new function to be handled:
 - Create a FunctionObject
 - Create a FunctionParCommand
-- Add entry to ParClientCommandHandler
+- Add entry to ParClientCmdHandler
 - Add FunctionBundle, FunctionReq, FunctionRep to grpc proto file
 - Add entry to GServer
-- Add entry to ParEngineCommandHandler
+- Add entry to ParEngineCmdHandler
 
 ### Notes
 Functions follow a camel case naming convention. (https://www.geeksforgeeks.org/java-naming-conventions/#:~:text=Java%20uses%20CamelCase%20as%20a,letter%2C%20rest%20all%20with%20capital.)

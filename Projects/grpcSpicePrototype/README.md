@@ -34,5 +34,15 @@ The code opens up relevant GRPC endpoints to service the client.
 The respective endpoints use a ParEngineCmdHandler object to handle the requests.  
 A ParResponse object is filled with the results. The server will then turn the object into a proto struct to be sent back to the client. The client will recieve the proto struct and turn it back into a ParResponse object for it to parse through.  
 
+
+### Adding a New Function
+The following things need to be accounted for when adding a new function to be handled:
+- Create a FunctionObject
+- Create a FunctionParCommand
+- Add entry to ParClientCommandHandler
+- Add FunctionBundle, FunctionReq, FunctionRep to grpc proto file
+- Add entry to GServer
+- Add entry to ParEngineCommandHandler
+
 ### Notes
 Functions follow a camel case naming convention. (https://www.geeksforgeeks.org/java-naming-conventions/#:~:text=Java%20uses%20CamelCase%20as%20a,letter%2C%20rest%20all%20with%20capital.)

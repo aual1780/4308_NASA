@@ -1,0 +1,9 @@
+Willie, Austin, Matthew, Joel, Nick
+
+Weekly group meeting
+
+Topics:
+- Semester scheduling
+  - TA and Sponsor meeting needs rescheduling
+- Merging marshalling code into dispatching code
+- Plan for the automation of covering the spice library

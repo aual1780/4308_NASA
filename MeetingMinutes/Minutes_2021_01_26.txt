@@ -1,0 +1,15 @@
+Willie, Austin, Matthew, Joel, Nick
+
+Weekly group meeting
+
+Topics:
+- Semester scheduling
+  - TA and Sponsor meeting needs rescheduling
+- Merging marshalling code into dispatching code
+- Plan for the automation of covering the spice library
+
+
+@Marcel
+We just had a team meeting to discuss our current plan.  Right now we have 2 projects.  One focuses on distributing tasks across background workers (P1). The other focuses on SPICE function differentiation over GRPC (P2).  We are outlining a plan to merge the 2 projects.  We will use P1 as the base project because it's organized a bit better and we will add in the components of P2.  Getting the background workers merged looks simple and straightforward.  If there are any problems, they wil appear on the client/engine side as we integrate the P2 requests into the task distribution engine.  To start, we will conduct tests running a single background worker - that will make debugging easier than trying to use the multi-dispatch.  When we are happy with the single-worker, we will verify multi-dispatch.
+At the moment, we have furnsh, str2et, and spkpos in the workflow.  We will use them to test and demo the prototype.  From there, we will work on an automation suite to generate implementations for the rest of the SPICE
+Joel has already been working on the automation project.  He can has successfully written a parser to read the list of SPICE functions (including special instructions for local-only functions or ignored functions).  We will use that to generate client/server/serializer code for each SPICE call

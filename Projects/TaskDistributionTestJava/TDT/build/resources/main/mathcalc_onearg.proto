@@ -1,0 +1,25 @@
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.Main.Spice.MathCalc.OneArg";
+
+
+// The greeting service definition.
+service MathCalc {
+  // Sends a greeting
+  rpc DoMath (MathCalcRequest) returns (MathCalcReply) {}
+}
+
+// The request message containing the user's name.
+message MathCalcRequest {
+  string calcName = 1;
+  int32 BatchID = 2;
+  repeated double args = 3;
+}
+
+// The response message containing the greetings
+message MathCalcReply {
+  int32 BatchID = 1;
+  repeated double responses = 2;
+}

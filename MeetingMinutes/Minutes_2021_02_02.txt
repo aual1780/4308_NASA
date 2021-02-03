@@ -1,0 +1,18 @@
+Full Attendance
+
+- Austin
+- Willie
+- Joel
+- Joe
+- Matt
+- Sahib
+- Nick
+
+Primary topic: Team responsibility reorganization.  We have not been doing a good job of task planning, job distribution, or organization.
+We have allowed roles and resonsibilites to become confused.  Our proposed solution is to move Austin from a "general manager" role to a more specific "team coordination" role.
+This will entail less technical work than previous, and more people management.
+
+In turn, we are also moving Willie to a technical management role because of his current ownership of the gRPC marshalling project.
+We feel he is in the best position to organize and manage the codebase.  He will begin work on merging TDT with marshalling and assign jobs to team members based on avalable cycles
+
+Hopefully this change will get us back on track for a successful semester and product delivery

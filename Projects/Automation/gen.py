@@ -29,13 +29,12 @@ def main(argv):
 
     for func in functions:
         try:
-            generate_file(func, 'Object.java', out)
-            generate_file(func, 'Command.java', out)
+            generate_files(func, ['Object.java', 'Command.java'], out)
         except ValueError as _:
             print('not yet working: %s', func.name)
 
 
-def generate_file(func, template, out):
+def generate_files(func, templates, out):
 
     upper_name = func.name.capitalize()
     lower_name = func.name
@@ -79,17 +78,18 @@ def generate_file(func, template, out):
     args_no_types = args_no_types[:-2]
             
 
-    with open('templates/%s' % template, 'r') as in_file:
-        output = in_file.read() \
-            .replace('###LOWER_NAME###', lower_name) \
-            .replace('###UPPER_NAME###', upper_name) \
-            .replace('###FIELDS###', fields) \
-            .replace('###DEFAULTS###', defaults) \
-            .replace('###ARGS###', args) \
-            .replace('###ARGS_NO_TYPES###', args_no_types) \
-            .replace('###ASSIGN_ARGS###', assign_args)
-        with open('%s/%s%s' % (out, upper_name, template), 'w') as out_file:
-            out_file.write(output)
+    for template in templates:
+        with open('templates/%s' % template, 'r') as in_file:
+            output = in_file.read() \
+                .replace('###LOWER_NAME###', lower_name) \
+                .replace('###UPPER_NAME###', upper_name) \
+                .replace('###FIELDS###', fields) \
+                .replace('###DEFAULTS###', defaults) \
+                .replace('###ARGS###', args) \
+                .replace('###ARGS_NO_TYPES###', args_no_types) \
+                .replace('###ASSIGN_ARGS###', assign_args)
+            with open('%s/%s%s' % (out, upper_name, template), 'w') as out_file:
+                out_file.write(output)
 
 
 

@@ -6,6 +6,7 @@ the list of function declarations it contains.
 """
 
 import sys
+import os
 from antlr4 import FileStream, CommonTokenStream
 from DeclarationsLexer import DeclarationsLexer
 from DeclarationsParser import DeclarationsParser
@@ -21,24 +22,35 @@ def main(argv):
     stream = CommonTokenStream(lexer)
     parser = DeclarationsParser(stream)
     functions = parser.cspice().result
-    print("Test output for first function axisar:")
-    print(generate_object_file(functions[0]))
+
+    out = 'out'
+    if not os.path.exists(out):
+        os.makedirs(out)
+
+    for func in functions:
+        try:
+            generate_object_file(func, 'Object.java', out)
+            generate_object_file(func, 'Command.java', out)
+        except ValueError as _:
+            print('not yet working: %s', func.name)
 
 
-def generate_object_file(func):
+def generate_object_file(func, template, out):
 
     upper_name = func.name.capitalize()
+    lower_name = func.name
     
     fields = ''
     defaults = ''
     args = ''
+    args_no_types = ''
     assign_args = ''
 
     for i,arg in enumerate(func.args):
 
         ty = arg.data_type.base_to_str()
         for _ in range(arg.data_type.array_depth):
-            ty = 'ArrayList<%s>' % ty
+            ty = 'ArrayList<%s>' % ty.capitalize()
         fields += 'public %s arg%i;\n' % (ty, i)
 
         default = ''
@@ -54,24 +66,30 @@ def generate_object_file(func):
             elif ty == 'String':
                 default = '"arg%i"' % i
             else:
-                raise NotImplementedError("i'm not ready for these yet")
+                raise ValueError("i'm not ready for these yet")
         else:
             default = 'new %s()' % ty
         defaults += 'arg%i = %s;\n' % (i, default)
 
-        args += 'a%i,' % i
+        args += '%s a%i, ' % (ty, i)
+        args_no_types += 'a%i, ' % i
         assign_args += 'arg%i = a%i;\n' % (i,i)
     
-    args = args[:-1]
+    args = args[:-2]
+    args_no_types = args_no_types[:-2]
             
 
-    with open('templates/Object.java.temp', 'r') as file:
-        return file.read() \
+    with open('templates/%s' % template, 'r') as in_file:
+        output = in_file.read() \
+            .replace('###LOWER_NAME###', lower_name) \
             .replace('###UPPER_NAME###', upper_name) \
             .replace('###FIELDS###', fields) \
             .replace('###DEFAULTS###', defaults) \
             .replace('###ARGS###', args) \
+            .replace('###ARGS_NO_TYPES###', args_no_types) \
             .replace('###ASSIGN_ARGS###', assign_args)
+        with open('%s/%s%s' % (out, upper_name, template), 'w') as out_file:
+            out_file.write(output)
 
 
 

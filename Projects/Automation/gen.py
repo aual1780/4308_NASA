@@ -36,6 +36,9 @@ def main(argv):
 
 def generate_files(func, templates, out):
 
+    if len(func.args) == 0:
+        raise ValueError("i'm not ready for these yet")
+
     upper_name = func.name.capitalize()
     lower_name = func.name
 

@@ -65,3 +65,22 @@ class DataType:
         else:
             raise ValueError("Base type not recognized: " + str(self.base_type))
         return result + "[]"*self.array_depth
+    
+    def base_to_str(self):
+        if self.base_type == DataType.VOID:
+            return "void"
+        elif self.base_type == DataType.INT:
+            return "int"
+        elif self.base_type == DataType.DOUBLE:
+            return "double"
+        elif self.base_type == DataType.BOOLEAN:
+            return "bool"
+        elif self.base_type == DataType.STRING:
+            return "String"
+        elif self.base_type == DataType.GFSEARCHUTILS:
+            return "GFSearchUtils"
+        elif self.base_type == DataType.GFSCALARQUANTITY:
+            return "GFScalarQuantity"
+        else:
+            raise ValueError("Base type not recognized: " + str(self.base_type))
+        

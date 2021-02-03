@@ -30,22 +30,22 @@ def main(argv):
     for func in functions:
         try:
             generate_files(func, ['Object.java', 'Command.java'], out)
-        except ValueError as _:
-            print('not yet working: %s', func.name)
+        except ValueError:
+            print('not yet working: %s' % func.name)
 
 
 def generate_files(func, templates, out):
 
     upper_name = func.name.capitalize()
     lower_name = func.name
-    
+
     fields = ''
     defaults = ''
     args = ''
     args_no_types = ''
     assign_args = ''
 
-    for i,arg in enumerate(func.args):
+    for i, arg in enumerate(func.args):
 
         ty = arg.data_type.base_to_str()
         for _ in range(arg.data_type.array_depth):
@@ -72,11 +72,10 @@ def generate_files(func, templates, out):
 
         args += '%s a%i, ' % (ty, i)
         args_no_types += 'a%i, ' % i
-        assign_args += 'arg%i = a%i;\n' % (i,i)
-    
+        assign_args += 'arg%i = a%i;\n' % (i, i)
+
     args = args[:-2]
     args_no_types = args_no_types[:-2]
-            
 
     for template in templates:
         with open('templates/%s' % template, 'r') as in_file:
@@ -90,7 +89,6 @@ def generate_files(func, templates, out):
                 .replace('###ASSIGN_ARGS###', assign_args)
             with open('%s/%s%s' % (out, upper_name, template), 'w') as out_file:
                 out_file.write(output)
-
 
 
 if __name__ == '__main__':

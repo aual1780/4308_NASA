@@ -29,13 +29,13 @@ def main(argv):
 
     for func in functions:
         try:
-            generate_object_file(func, 'Object.java', out)
-            generate_object_file(func, 'Command.java', out)
+            generate_file(func, 'Object.java', out)
+            generate_file(func, 'Command.java', out)
         except ValueError as _:
             print('not yet working: %s', func.name)
 
 
-def generate_object_file(func, template, out):
+def generate_file(func, template, out):
 
     upper_name = func.name.capitalize()
     lower_name = func.name

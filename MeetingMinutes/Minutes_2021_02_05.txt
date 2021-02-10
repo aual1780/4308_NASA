@@ -1,0 +1,16 @@
+Full Attendance
+
+- Austin
+- Willie
+- Joel
+- Joe
+- Matt
+- Sahib
+- Nick
+
+Meeting with Marcel
+
+- Discussed project timeline and current tasks.  Similar content to 2/02 and 2/03.
+- Willie has taken charge of task planning and technical organization
+- Project seems to have a better trajectory now than a week ago
+- TDT and demo are top priority

@@ -1,0 +1,34 @@
+Full Attendance
+
+- Austin
+- Willie
+- Joel
+- Joe
+- Matt
+- Sahib
+- Nick
+
+Regular team meeting
+
+Joel presents showstopper issue
+- Our underlying assumptions about CSPICE are no longer sufficient.  We thought that *most* functions followed a similar call pattern, but we have found this to be untrue
+- There are too many edge cases in the CSPICE functions
+- We must take the time to evaluate all CSPICE functions and classify them by behavior type
+
+- We have tasks that need to be sent to all workers (like furnish)
+- We have tasks that need to be distributed via TDT algorithm (ie threaded)
+- We have tasks that write to file instead of returning a value
+- We have tasks that require local state changes in addition to the function being executed (surrogate pairs)
+
+We are concerned with the DAF functions
+- They modfy the kernel format (local state change)
+- They require surrogate pair commands
+- Possible solutions:
+  - Full surrogate pair tracking
+    - very difficult and time consuming
+  - Add pair of tasks to output stream
+    - This wont work bc tasks could be separated by batch boundaries
+  - Run all tasks on Worker 0
+    - This wont work because it would stall distributed "waves"
+  - Run outside of ParSpice
+    - possible, but messy

@@ -1,0 +1,20 @@
+Full Attendance
+
+- Austin
+- Willie
+- Joel
+- Joe
+- Matt
+- Sahib
+- Nick
+
+Regular team meeting
+
+- CSPICE function classification still in progress
+- TDT in progress
+- JUnit on back burner, but Joe is looking into it
+- Joel is investigating concerns regarding kernel state modifications
+  - This goes back to previous weeks concerns of surrogate pair commands.  We still do not have a satisfactory resolution
+- Code automation suite is in progress
+
+No new issues, fairly quick update meeting

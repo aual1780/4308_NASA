@@ -3,34 +3,35 @@ package org.Main.Worker;
 import io.grpc.stub.StreamObserver;
 import org.Main.AutoResetEvent;
 import org.Main.AwaitableStreamObserver;
+import org.Main.Commands.ParObject;
 import org.Main.Worker.Function2;
 import org.Main.Spice.MathCalc.OneArg.*;
 
 import java.util.ArrayList;
 import java.util.function.Function;
 
-public class DistributedTaskState {
+public class DistributedTaskState<T_Object extends ParObject, T_Response extends com.google.protobuf.MessageOrBuilder> {
     private WorkerPoolState poolState;
     private String calcName;
     private int batchSize;
-    private Function<Integer, Double> argFactory;
-    private Function2<Object, MathCalcReply, Void> responseCallback;
+    private Iterable<T_Object> argFactory;
+    private Consumer2<Object, T_Response> responseCallback;
     private AutoResetEvent requestWaitHandle;
     private AutoResetEvent responseWaitHandle;
-    private ArrayList<AwaitableStreamObserver<MathCalcReply>> currentTaskBatch;
+    private ArrayList<AwaitableStreamObserver<T_Response>> currentTaskBatch;
     private AutoResetEvent jobCompletionHandle;
 
     public DistributedTaskState(
             WorkerPoolState PoolState,
             String CalcName,
             int BatchSize,
-            Function<Integer, Double> ArgFactory,
-            Function2<Object, MathCalcReply, Void> ResponseCallback) {
+            Iterable<T_Object> ArgFactory,
+            Consumer2<Object, T_Response> ResponseCallback) {
         this.calcName = CalcName;
         this.batchSize = BatchSize;
         this.argFactory = ArgFactory;
         this.responseCallback = ResponseCallback;
-        this.currentTaskBatch = new ArrayList<AwaitableStreamObserver<MathCalcReply>>();
+        this.currentTaskBatch = new ArrayList<AwaitableStreamObserver<T_Response>>();
         for(int i = 0; i < poolState.getWorkerCount(); ++i)
         {
             this.currentTaskBatch.add(null);
@@ -55,12 +56,12 @@ public class DistributedTaskState {
         return  batchSize;
     }
 
-    public Function<Integer, Double> getArgFactory()
+    public Iterable<T_Object> getArgFactory()
     {
         return argFactory;
     }
 
-    public Function2<Object, MathCalcReply, Void> getResponseCallback()
+    public Consumer2<Object, T_Response> getResponseCallback()
     {
         return responseCallback;
     }
@@ -73,7 +74,7 @@ public class DistributedTaskState {
         return responseWaitHandle;
     }
 
-    public ArrayList<AwaitableStreamObserver<MathCalcReply>> getCurrentTaskWave() {
+    public ArrayList<AwaitableStreamObserver<T_Response>> getCurrentTaskWave() {
         return currentTaskBatch;
     }
 

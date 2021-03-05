@@ -32,7 +32,7 @@ public class FurnshParCommand extends ParCommand {
         //return new ParClientCmdHandler().ParProcess(this);
 
         //blocking function call
-        pool.PerformDistributedTask(
+        pool.PerformBroadcastTask(
                 name,
                 args,
                 this::BuilderFactory,

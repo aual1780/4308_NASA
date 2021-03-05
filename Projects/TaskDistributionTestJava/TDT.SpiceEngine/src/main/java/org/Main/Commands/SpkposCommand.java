@@ -46,9 +46,9 @@ public class SpkposCommand extends ParCommand {
     }
 
     //TODO: automate
-    private SpkposBundle.Builder BuilderFactory(int BatchID)
+    private SpkposBundle.Builder BuilderFactory()
     {
-        return SpkposBundle.newBuilder().setBatchID(BatchID);
+        return SpkposBundle.newBuilder();
     }
 
     //TODO: automate

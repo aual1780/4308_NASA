@@ -45,9 +45,9 @@ public class FurnshParCommand extends ParCommand {
     }
 
     //TODO: automate
-    private FurnshBundle.Builder BuilderFactory(int BatchID)
+    private FurnshBundle.Builder BuilderFactory()
     {
-        return FurnshBundle.newBuilder().setBatchID(BatchID);
+        return FurnshBundle.newBuilder();
     }
 
     //TODO: automate

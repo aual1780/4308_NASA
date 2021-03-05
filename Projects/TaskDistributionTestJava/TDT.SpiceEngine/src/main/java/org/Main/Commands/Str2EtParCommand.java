@@ -46,9 +46,9 @@ public class Str2EtParCommand extends ParCommand {
     }
 
     //TODO: automate
-    private Str2EtBundle.Builder BuilderFactory(int BatchID)
+    private Str2EtBundle.Builder BuilderFactory()
     {
-        return Str2EtBundle.newBuilder().setBatchID(BatchID);
+        return Str2EtBundle.newBuilder();
     }
 
     //TODO: automate

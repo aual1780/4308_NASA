@@ -97,7 +97,7 @@ public class WorkerPool  {
     void PerformDistributedTask(
             String CalcName,
             Iterable<T_Spice> ArgFactory,
-            Function<Integer, T_RequestBuilder> RequestBuilderFactory,
+            Function0<T_RequestBuilder> RequestBuilderFactory,
             Consumer2<T_RequestBuilder, T_Spice> RequestBuilderAggregator,
             Function<T_RequestBuilder, T_Request> RequestFactory,
             Consumer3<ParSpiceGrpc.ParSpiceStub, T_Request, AwaitableStreamObserver<T_Response>> StubSenderCallback,
@@ -121,8 +121,6 @@ public class WorkerPool  {
         final Consumer2<Object, T_Response> responseCallback = state.getResponseCallback();
         final ArrayList<AwaitableStreamObserver<T_Response>> currentTaskWave = state.getCurrentTaskWave();
 
-
-        int batchID = 0;
         int currentIdx = 0;
 
         //continue working until the entire batch is processed
@@ -139,7 +137,7 @@ public class WorkerPool  {
             {
                 //make a new batch request for this worker
                 int rqstSize = 0;
-                T_RequestBuilder parRequestBuilder = RequestBuilderFactory.apply(batchID++);
+                T_RequestBuilder parRequestBuilder = RequestBuilderFactory.apply();
 
                 //Calculate the args for this request
                 //this allows the client to provide an arg factory and lazily evaluate arguments

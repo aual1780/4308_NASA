@@ -1,0 +1,49 @@
+  
+Full Attendance
+
+- Austin
+- Willie
+- Joel
+- Joe
+- Matt
+- Sahib
+- Nick
+
+Meeting with Marcel
+
+Plan for Marcel to write a publication quality paper re this project
+
+We must plan for strong documentation of the project even if we don't finish all of the work
+- Definitive doc should have intro, high level spec, low level details, use cases, and performance metrics
+
+Make sure that decisions are included in design doc
+- Must be in depth enough for Marcel to write a technical paper for possible publication
+
+Performance Testing
+- We still need to work on performance testing
+- Our target has changed, so our demo and test are delayed, but we are still making strong progress
+- Instead of focusing on a hand-made MVP, we have chosen to leverage the automation suite to generate the MVP
+- This means that the MVP will not be available until the automation tools has been completed with the fully merged project components
+
+Class video ideas
+- Creating a video for this project will be difficult because it is a very technical developer tool
+- We should focus on visualising the performance and multi-threaded operations instead of showing code
+- @Marcel 
+  - "There are many tools used by NASA that integrate geometric modeling from SPICE.  Unfortunately, these models are hindered by poor SPICE performance.  The single-threaded design is very slow.  parSpice is designed to fix the performance woes of the core tooling"
+  
+
+Joel cSPICE concerns
+- rehash task stateful functions
+  - file handlers
+  - internal SPICE state modifications
+  - cannot be run as part of distribution system
+
+Options:
+- run on worker0
+- run in-proc (no distribution)
+
+@Marcel
+- Undecided, does not know enough about the functions to give an answer
+- Currently leaning towards ignoring these special-case functions
+- There is concern that these methods affect behvior for all other SPICE methods
+  - If this is the case, we will need to globally apply the state modifications

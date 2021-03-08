@@ -1,0 +1,15 @@
+All required members are present
+- Austin
+- Joel
+- Willie
+- Nick
+
+TDT client merge meeting
+
+Austin presented changes to the TDT java project that will the clients to integrate into the full gRPC routing system
+- TDT.PerformDistributedTask now makes heavy use of generics and callbacks to allow for arbitrary gRPC messages
+- TDT.PerformBroadcastTask is now available
+- gRPC command objects are updated to match the requirements of TDT.PerformDistributedTask
+- gRPC command obejcts are still automation-friendly
+
+Willie approves, Joel still has concerns

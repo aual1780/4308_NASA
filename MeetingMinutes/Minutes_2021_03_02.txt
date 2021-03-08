@@ -1,0 +1,18 @@
+Full Attendance
+
+- Austin
+- Willie
+- Joel
+- Joe
+- Matt
+- Sahib
+- Nick
+
+Team meeting
+
+- Discussed current progress
+- TDT merge is top priority
+- TDT client merge code is almost ready, but we will need a followup meeting on Thurs
+- Nick is working on TDT server merge
+- GRPC code is good
+- Automation code is making good progress under Joel

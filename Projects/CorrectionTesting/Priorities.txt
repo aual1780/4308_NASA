@@ -1,0 +1,5 @@
+To Do:
+
+  - Introduce batches into test cases to be applied to functions
+  - Set up each function test such that it checks error and failure as well as their results matching up
+  - Output of function should be in the same format between JNISpice and Parspice

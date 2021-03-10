@@ -1,0 +1,19 @@
+Full Attendance
+
+- Austin
+- Willie
+- Joel
+- Joe
+- Matt
+- Sahib
+- Nick
+
+Team meeting
+
+Finalize automation merge with gRPC and TDT
+- Simplify TDT callback requirements
+- Add new interface to Batch command objects to make TDT.Perform<Action>() calls more pleasant
+
+Joe has been working on testing
+We are not certain how to test all functions 
+- We don't know enough valid inputs for enough functions to validate the outputs

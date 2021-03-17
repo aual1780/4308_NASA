@@ -1,0 +1,26 @@
+Attendance
+
+- Austin
+- Willie
+- Joel
+- Joe
+- Nick
+
+Team meeting
+
+Demo/initial exe is now working, but it's slow
+- Half of execution time is grpc message packing
+- Not sure how we can improve the runtime
+- We will attempt to optimize
+
+
+Worker problems
+- Must wait for workers to connect before proceeding with task processing
+- Must make sure that workers shutdown with app
+- Add dummy TCP connection so we can wait for workers to become responsive before sending requests
+
+
+Testing
+- Joe
+- We will likely need to create manual tests for SPICE functions because we do not know valid argument sets
+- Select testing subset (roughly 20ish funcs?)

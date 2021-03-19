@@ -1,0 +1,41 @@
+Attendance
+
+- Austin
+- Willie
+- Joel
+- Joe
+- Matt
+
+Sponsor Meeting
+
+Presented current performance metrics, 100x slower on very small jobs, 2x slower on medium jobs
+- Marcel is pleased that the project now works, but obviously less than excited about the results
+- Full profiling analysis is required
+- We already know that 1/2 of runtime is gRPC packing/unpacking
+- Test on expensive functions to see if the performance comparison is better
+- Marcel has strongly encouraged us to find a solution to our perf issues.
+
+Presentation:
+- Change the focus from completed product to research project
+- "We were assigned this research project, and were asked to determineg if there was a way to optimize CSPICE.  These are our results. [...] We dont think the desired performance goals are attainable with grpc, but we believe that [zeroMQ, shared memory, etc] could be an avenue for further research"
+- Present perf metrics
+- Plan for future work
+
+
+Idea 1: 
+multithread the gRPC packing to simply improve performance with existing design
+
+Idea 2:
+use zeromq
+
+Idea 3:
+Use gradle plugin to compile user execution pipeline into its own jar file to reduce arg passing
+
+Idea 3b: 
+Use gradle plugin to compile user arguments into jar files to completely bypass arg passing
+
+Idea 4:
+Use raw shared memory to pass args instead of gRPC/zeroMq
+
+Idea 5:
+burn it all down

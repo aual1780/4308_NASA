@@ -1,0 +1,33 @@
+Full Attendance
+
+- Austin
+- Willie
+- Joel
+- Joe
+- Matt
+- Sahib
+- Nick
+
+Team meeting
+
+Joel has presented a novel solution to our performance problems with a complete paradigm shift
+- New object stream messaging strategy
+- Scraps all of the previous project work of the last 6 months
+- Very simple command model, does not require complex serialization
+- Does not use gRPC
+- Also does not require complex automation tooling
+  - User are able to use the normal cSPICE workflow as-is
+  
+  Description
+  - Users write their cSPICE pipeline as a worker process
+  - User supplies input data from master process
+  - master process streams input data to pipelined worker process
+  - worker completes pipeline and returns final result
+  
+  Benefits
+  - Only a single outbound request per task
+  - Much faster than previous parSPICE work
+  - Much faster than native cSPICE (unthreaded)
+  
+  Drawbacks
+  - Potenetially complex setup

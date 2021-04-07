@@ -1,0 +1,15 @@
+Full Attendance
+
+- Austin
+- Willie
+- Joel
+- Joe
+- Matt
+- Sahib
+- Nick
+
+Team meeting
+
+Quick meetig
+We are continuing work with new soltion platform. The solution works, now we are working on testing and documentation.
+We will continue with this plan for the rest of the year
